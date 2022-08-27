@@ -1,0 +1,55 @@
+#chat-box{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border: 1px dashed grey;
+    height: 320px;
+	width: 300px;
+	background: white;
+	padding: 5px;
+	box-shadow: 1px 1px 1px 1px lightgrey;
+}
+#chat-list{
+    list-style: none;
+    padding: 10px;
+    height: 70%;
+    background-color: white;
+    overflow: auto;
+}
+.self{
+    text-align: right;
+	padding: 5px;
+}
+.self span{
+    display: inline-block;
+	padding: 15px;
+	background-color: #a0dcff;
+}
+.other{
+    text-align: left;
+	padding: 5px;
+}
+.other span{
+    display: inline-block;
+	padding: 15px;
+	background-color: #ffa0a0;
+}
+#chat-input{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#message{
+    height: 50%;
+    width: 10%;
+}
+#send-message{
+    height: 60%;
+    width: 30%;
+    font-size: 25px;
+    color: white;
+    border: none;
+    background: #58d258;
+    cursor: pointer;
+}

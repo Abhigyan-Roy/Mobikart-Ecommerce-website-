@@ -1,0 +1,246 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiKart</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="slidein.css">
+    <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Brands</a>
+                <div class="sub-menu">
+                    <ul class="sub-menu">
+                        <li><a href="/cart/iphone">iphone</a></li>
+                        <li><a href="">samsung</a></li>
+                        <li><a href="">realme</a></li>
+                        <li><a href="/cart/oppo">oppo</a></li>
+                        <li><a href="/cart/vivo">vivo</a></li>
+                        <li><a href="">oneplus</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
+        </ul>
+        <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
+        <%if(locals.user){%>
+         <% if(cart==null || cart.items.length==0){%>
+             <div class="countitems">0</div>
+         <%} else{%>
+            <%  let totalQty=0;
+                for(let i = 0; i < cart.items.length; i++){
+                let product = cart.items[i];
+                totalQty+=product.qty;  
+            %>
+            <%}%>
+            <div class="countitems"><%=totalQty%></div>
+          <%}%>
+        <%}%>
+        <% if(locals.user){%>
+            <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></button></a>
+        <%} else{%>
+            <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
+        <%}%>
+        <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
+    </nav>
+    <header>
+        <div class="heading">
+            <div class="head">
+                <img src="pic/sc3.png" alt="" class="logo" width="220" height="110">
+                <h1>MobiKart</h1>
+            </div>
+            <div class="line"></div>
+            <h3>Search, Compare, Buy...</h3>
+            <div class="search-container">
+                <input type="text" name="" placeholder="Search....">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+            <div class="logos">
+
+                <img src="pic/l2.png" alt="" width="60" height="50">
+                <img src="pic/l1.png" alt="" width="60" height="50">
+                <img src="pic/l5.png" alt="" width="70" height="80">
+                <img src="pic/l4.png" alt="" width="90" height="38">
+                <img src="pic/l8.png" alt="" width="72" height="40">
+                <img src="pic/l7.png" alt="" width="70" height="50">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="brands" data-aos="fade-right">
+            <h2>Premium SmartPhone Deals</h2>
+        </div>
+        <div class="brands-card">
+            <div class="card" data-aos="fade-down">
+                <div class="one"><img src="pic/p3.png" alt="" width="200" height="190"></div>
+                <div class="two">
+                    <h2>iPhone 13</h2>
+                    <h4>128GB</h4>
+                    <h3><s>₹ 79,900</s>&nbsp;&nbsp;&nbsp;₹ 67,990</h3>
+                    <h3></h3>
+                    <form action="/add-to-cart/add" method="post">
+                        <button type="submit">add to cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up">
+                <div class="one"><img src="pic/p3.webp" alt="" width="300" height="190"></div>
+                <div class="two">
+                    <h2>S22 Ultra 5G</h2>
+                    <h4>256GB</h4>
+                    <h3><s>₹ 75,990</s>&nbsp;&nbsp;&nbsp;₹ 71,900</h3>
+                    <h3></h3>
+                    <form action="/add-to-cart/add" method="post">
+                        <button type="submit">add to cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up">
+                <div class="one"><img src="pic/p4.webp" alt="" width="300" height="200"></div>
+                <div class="two">
+                    <h2>S22 Ultra 5G</h2>
+                    <h4>512GB</h4>
+                    <h3><s>₹ 1,18,990</s>&nbsp;&nbsp;&nbsp;₹ 1,08,900</h3>
+                    <h3></h3>
+                    <form action="/add-to-cart/add" method="post">
+                        <button type="submit">add to cart</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-down">
+                <div class="one"><img src="pic/p5.webp" alt="" width="280" height="190"></div>
+                <div class="two">
+                    <h2>Xiomi 12 Pro</h2>
+                    <h4>256GB</h4>
+                    <h3><s>₹ 69,999</s>&nbsp;&nbsp;&nbsp;₹ 63,999</h3>
+                    <h3></h3>
+                    <form action="/add-to-cart/add" method="post">
+                        <button type="submit">add to cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="check">
+            <button data-aos="fade-right">See More...</button>
+        </div>
+        <div class="brands" data-aos="zoom-in-down" data-aos-duration="600">
+            <h2>New Launches</h2>
+        </div>
+        <div class="brands-card">
+            <div class="card">
+                <div class="one"><img src="pic/p6.png" alt="" width="160" height="190" data-aos="fade-up"></div>
+                <div class="two">
+                    <h2>Galaxy M53 5G</h2>
+                    <h4>6GB+128GB</h4>
+                    <h4>108 MP Quad Camera</h4>
+                    <h3>Starting at ₹ 28,499</h3>
+                    <button type="submit">checkout here</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="one"><img src="pic/p7.png" alt="" width="270" height="250"
+                        style="position: relative; top: -3rem;" data-aos="fade-up"></div>
+                <div class="two">
+                    <h2>OnePlus Nord CE 2 Lite</h2>
+                    <h4>6GB+128GB | 8GB+128GB</h4>
+                    <h4>64 MP Tri Camera</h4>
+                    <h3>Starting at ₹ 19,499</h3>
+                    <button type="submit">checkout here</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="one"><img src="pic/p8.png" alt="" width="240" height="225"
+                        style="position: relative; top: -1.1rem;" data-aos="fade-up"></div>
+                <div class="two">
+                    <h2>Vivo X80</h2>
+                    <h4>8GB+128GB | 12GB+256GB</h4>
+                    <h4>50 MP Quad Camera</h4>
+                    <h3>Starting at ₹ 54,999</h3>
+                    <button type="submit">checkout here</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="one"><img src="pic/p6.webp" alt="" width="260" height="250"
+                        style="position: relative; top: -2rem;" data-aos="fade-up"></div>
+                <div class="two">
+                    <h2>Oppo F21 Pro</h2>
+                    <h4>8GB+128GB</h4>
+                    <h4>64 MP Tri Camera</h4>
+                    <h3>Starting at ₹ 26,999</h3>
+                    <button type="submit">checkout here</button>
+                </div>
+            </div>
+        </div>
+        <div class="check">
+            <button>See More...</button>
+        </div>
+        <div class="brands">
+            <h2>Shop By Brands</h2>
+        </div>
+        <div class="shop">
+            <div class="brandname"><a href="/cart/vivo"><img src="pic/br1.jpg" alt="" width="180" height="80" data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/oppo"><img src="pic/br2.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/samsung"><img src="pic/br3.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/realme"><img src="pic/br4.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/oneplus"><img src="pic/br5.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/iphone"><img src="pic/br6.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
+        </div>
+        <div class="brands">
+            <h2>Top Reasons to Buy from Mobikart</h2>
+        </div>
+        <div class="shop">
+            <div class="reasons"><img src="pic/r1.png" alt="" width="220" height="130"></div>
+            <div class="reasons"><img src="pic/r2.png" alt="" width="200" height="150"></div>
+            <div class="reasons"><img src="pic/r3.png" alt="" width="200" height="160"></div>
+        </div>
+    </main>
+    <footer>
+        <div class="foot1">
+           Back To Top
+        </div>
+        <div class="foot2">
+            <div id="first">
+                <h2>MobiKart</h2>
+                <p>Mobikart is an Online eCommerce store where users can buy awesome, unique and latest products from all over the world in India.</p>
+            </div>
+            <div id="first">
+                <h2>Find In Last</h2>
+                <p><ul>
+                    <li>FAQs</li>
+                    <li>Press</li>
+                    <li>Blog</li>
+                    <li>Order Tracking</li>
+                </ul></p>
+            </div>
+            <div id="first">
+                <h2>Information</h2>
+                <p><ul>
+                    <li>Terms & Conditions</li>
+                    <li>Privacy Policy</li>
+                    <li>Shipping Policy</li>
+                    <li>Return & Refund Policy</li>
+                </ul></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000
+        });
+    </script>
+    <script src="first.js"></script>
+
+</body>
+</html>
+

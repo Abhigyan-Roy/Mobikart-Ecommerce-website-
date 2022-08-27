@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    overflow-x: hidden;
+    color: aliceblue;
+    font-family: 'Cairo', sans-serif;
+}
+.all{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    width: 70vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    color: azure;
+}
+.items{
+    position: relative;
+    width: 60vw;
+    height: auto;
+    margin: 10px;
+    border: 2px solid white;
+    display: flex;
+    padding: 1rem;
+}
+.items img{
+    margin-right: 20px;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+small{
+    color: rgb(18, 146, 18);
+}
+i{
+    cursor: pointer;
+}
+.total{
+    margin-top: 4.4rem;
+    border: 1px solid white;
+    width: 20vw;
+    height: 25vh;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.total a button{
+    background-color: yellow;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.qty a{
+    color: aliceblue;
+}
+.del{
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    background-color: transparent;
+}
+.del i{
+    color: rgb(255, 255, 255);
+}
+.navigate{
+    width: 100vw;
+    height: 26vh;
+}
+nav {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    justify-content: center;
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+   
+}
+.sub-menu{
+    display: none;
+    color: white;
+}
+.nav-links li:hover .sub-menu{
+    display: block;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: -48px;
+}
+.nav-links li:hover .sub-menu li{
+    padding: 8px;
+    width: 150px;
+    font-size: 10px;
+}
+
+.nav-links li {
+    margin: 0 2.5rem;
+}
+.cart2{
+    position: absolute;
+    top: 1.125rem;
+    right: 8.75rem;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    cursor: pointer;
+}
+.menu-btn{
+    position: absolute;
+    top: 1.125rem;
+    right: 1.875rem;
+    cursor: pointer;
+    display: none;
+}
+li button {
+    background-color: rgb(52, 51, 51);
+    color: whitesmoke;
+    padding: 0.625rem 0.9375rem;
+    cursor: pointer;
+    border-radius: 1.25rem;
+    font-size: 0.9375rem;
+}
+a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.125rem;
+}
+ul {
+    list-style: none;
+}

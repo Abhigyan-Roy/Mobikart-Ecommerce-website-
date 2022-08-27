@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: black;
+    overflow-x: hidden;
+}
+
+.containerpro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.containerpro img{
+    margin: 40px 10px;
+}
+.containerpro h1{
+    color: aliceblue;
+    font-family: 'Kelly Slab', cursive;
+    margin-bottom: 10px;
+}
+.containerpro h3{
+    color: aliceblue;
+    font-family: 'Kelly Slab', cursive;
+    margin-bottom: 40px;
+}
+.btn{
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.btn a{
+    text-decoration: none;
+    color: black;
+}

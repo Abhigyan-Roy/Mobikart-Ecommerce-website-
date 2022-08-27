@@ -1,0 +1,50 @@
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+
+<body>
+    <h1>Add A Product-</h1>
+    <form action="/cart/create" method="post" class="addpro">
+        <input type="text" name="imagePath" placeholder="Input image Path.." required>
+        <input type="text" name="brand" placeholder="Product company.." required>
+        <input type="number" name="storage" placeholder="Storage.." required>
+        <input type="number" name="ram" placeholder="Ram.." required>
+        <input type="text" name="desc" placeholder="describe the product.." required>
+        <input type="number" name="mrp" placeholder="Actual price.." required>
+        <input type="number" name="price" placeholder="Set its price.." required>
+        <input type="hidden" name="qty">
+        <input type="submit" value="Add product">
+    </form>
+    <div class="container">
+        <% for(let i of products){ %>
+            <div class="details">
+                <div class="one"><img src="<%=i.imagePath%>" alt="" width="200" height="190"></div>
+                <div class="two">
+                    <p>
+                        <%=i.desc%>
+                    </p>
+                    <h2>
+                        <%=i.brand%>
+                    </h2>
+                    <h4>128GB</h4>
+                    <h3><s>
+                            <%=i.mrp%>
+                        </s>&nbsp;&nbsp;&nbsp;<%=i.price%>
+                    </h3>
+                    <a href="/cart/delete/<%=i._id%>">Delete</a>
+                    <form action="/cart/admin/edit/<%=i._id%>" method="post">
+                        <input type="text" name="imageRoute" placeholder="Input image Path.." required>
+                        <input type="number" name="frontcam" placeholder="Frontcam.." required>
+                        <input type="number" name="rearcam" placeholder="Rearcam.." required>
+                        <input type="number" name="Android" placeholder="Android.." required>
+                        <input type="text" name="seller" placeholder="Seller.." required>
+                        <input type="number" name="battery" placeholder="Battery.." required>
+                        <input type="text" name="processor" placeholder="Processor.." required>
+                        <input type="submit" value="Add Details">
+                    </form>
+                </div>
+            </div>
+            <% } %>
+    </div>
+</body>

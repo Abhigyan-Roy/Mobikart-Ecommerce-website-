@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    overflow-x: hidden;
+    font-family: 'Cairo', sans-serif;
+}
+header {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/b4.jpg);
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.6rem;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.8rem;
+}
+
+ul {
+    list-style: none;
+}
+.sub-menu{
+    display: none;
+    color: white;
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+   
+}
+.nav-links li i{
+   color: white;
+   cursor: pointer;
+}
+.nav-links li:hover .sub-menu{
+    display: block;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -48px;
+}
+.nav-links li:hover .sub-menu ul{
+    display: block;
+    margin: 10px;
+}
+.nav-links li:hover .sub-menu ul li{
+    padding: 8px;
+    width: 150px;
+    font-size: 10px;
+}
+
+.nav-links li {
+    margin: 0 4rem;
+}
+
+li button {
+    background-color: rgb(52, 51, 51);
+    color: whitesmoke;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+}
+
+.heading {
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+.head {
+    display: flex;
+}
+
+.head img {
+    margin-top: 2.2rem;
+}
+
+.heading h1 {
+    font-size: 5.6rem;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    margin-left: -5rem;
+}
+
+.line {
+    width: 9rem;
+    height: 0.15rem;
+    margin: -4rem 16rem 3.5rem auto;
+    background-color: aliceblue;
+}
+
+.heading h3 {
+    font-size: 1.6rem;
+    margin-top: -0.1rem;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+}
+
+.heading input[type=text] {
+    float: left;
+    padding: 0.6rem;
+    margin-top: 0.8rem;
+    font-size: 1.7rem;
+    border: none;
+    width: 43.5rem;
+    border-radius: 0.2rem;
+    overflow: hidden;
+}
+
+.heading .search-container button {
+    padding: 0.6rem 1rem;
+    margin-top: 0.8rem;
+    background: rgb(122, 121, 121);
+    font-size: 1.7rem;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 5rem;
+    margin-left: -2.5rem;
+}
+.logos img{
+    margin-right: 1.2rem;
+}
+.logos img:nth-child(3){
+    position: relative;
+    top: 2rem;
+}
+.logos img:nth-child(6){
+    position: relative;
+    top: 0.6rem;
+    margin-left: -1rem;
+}
+
+
+main {
+    width: 100vw;
+    height: 280vh;
+    background-color: rgba(6,6,6,255);
+}
+.menu-btn{
+    position: absolute;
+    top: 1.8rem;
+    right: 3rem;
+    cursor: pointer;
+    display: none;
+}
+.cart1{
+    position: absolute;
+    top: 1.5rem;
+    right: 7rem;
+}
+.cart2{
+    position: absolute;
+    top: 1.8rem;
+    right: 14rem;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    cursor: pointer;
+}
+.brands{
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+}
+.brands h2{
+    color: white;
+    font-size: 3rem;
+    font-family: 'Macondo', cursive;
+    margin-top: 5rem;
+}
+.brands-card{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.card{
+    width: 25%;
+    height: 80%;
+    background-color: antiquewhite;
+    margin: 1rem;
+    background-color: rgb(0, 0, 0);
+}
+.one{
+    width: 100%;
+    height: 60%;
+    text-align: center;
+}
+.two{
+    width: 100%;
+    height: 40%;
+    color: white;
+    text-align: center;
+}
+.two h2{
+    font-size: 2.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 1rem;
+}
+.two h3{
+    font-size: 1.8rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0.5rem;
+}
+.two h4{
+    font-size: 1.4rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0.5rem;
+}
+.two button{
+    padding: 0.5rem;
+    background-color: black;
+    color: aliceblue;
+    border: 0.2rem solid white;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-family: 'Kelly Slab', cursive;
+    border-radius: 3rem;
+    transition: all 0.7s ease;
+}
+.two button:hover{
+    background-color: aliceblue;
+    color: black;
+}
+.check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+.check button{
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: rgb(6, 64, 45);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: 'Kelly Slab', cursive;
+    font-size: 1.6rem;
+}
+.shop{
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.brandname{
+    width: 200px;
+    height: 200px;
+    margin: 6vh 1vw;
+    text-align: center;
+    cursor: pointer;
+}
+.reasons{
+    width: 200px;
+    height: 200px;
+    margin: 6vh 6vw;
+    text-align: center;
+    cursor: pointer;
+}
+.countitems{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    top: 4.4rem;
+    right: 6.4rem;
+    color: white;
+    border-radius: 50px;
+    background-color: rgb(189, 6, 6);
+    text-align: center;
+    z-index: 100;
+}
+footer{
+    width: 50vh;
+}
+.foot1{
+    background-color: rgb(78, 77, 76);
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    color: aliceblue;
+    font-family: 'Kelly Slab', cursive;
+    font-size: 15px;
+}
+.foot2{
+    background-color: rgb(49, 49, 48);
+    height: 30vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#first{
+    width: 40vh;
+    color: aliceblue;
+    font-size: 18px;
+    padding: 10px;
+    font-family: 'Cairo', sans-serif;
+}
+
+#first p{
+    font-size: 15px;
+
+}
+@media screen and (max-width:850px){
+    nav{
+        padding: 0;
+    }
+    .menu-btn{
+        display: block;
+        z-index: 2;
+    }
+    .nav-links{
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        background-color: rgb(53, 7, 77);
+        margin-top: -90rem;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+    .nav-links li{
+        margin: 3rem auto;
+    }
+    .mobile-menu{
+        margin-top: 0rem;
+    }
+}

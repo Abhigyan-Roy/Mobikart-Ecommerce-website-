@@ -1,0 +1,14 @@
+<head>
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+    <div class="container">
+        <form action="/users/update/<%=user._id%>" enctype="multipart/form-data" method="post">
+            <input type="file" name="avatar" placeholder="Profile Pic">
+            <input type="text" name="name" placeholder="Enter your name">
+            <input type="submit" value="Update">
+        </form>
+        <button class="btn"><a href="/">Back to Home</a></button>
+    </div>
+</body>

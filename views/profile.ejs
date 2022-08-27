@@ -1,0 +1,19 @@
+
+<head>
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/productpage.css">
+    <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+    <div class="navigate">
+        <%-include('_nav');%>
+    </div>
+    <div class="containerpro">
+        <img src="<%=user.avatar%>" alt="" width="200" height="200">
+        <h1>Welcome <%=user.name%></h1>
+        <h3><%=user.email%></h3>
+        <a href="/users/editpro/<%=user._id%>"><button type="submit"  class="btn">Edit your Profile</button></a>
+        <button class="btn"><a href="/users/sign-out">Sign Out</a></button>
+        <button class="btn"><a href="/">Back to Home</a></button>
+    </div>
+</body>

@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/sign.css">
+    <title>Sign Up</title>
+    <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="sign">
+        <div id="input">
+            <form action="/users/create-session" method="post">
+                <h1>SIGN IN!</h1><br>
+                <i>Sign in to access your account</i> <br><br>
+                Email Address<br>
+                <input type="email" size="60" class="name" name="email" required><br><br>
+                Password<br>
+                <input type="password" maxlength="30" size="60" class="name" name="password"><br><br>
+                <input type="submit" value="Log In" id="search">
+                <button id="searchgoogle"><a href="/users/auth/google"><i class="fa-brands fa-google"></i>&nbsp;Login with Google</a></button><br>
+                Not Having account!!
+                <button id="search"><a href="/users/sign-up">Sign Up</a></button>
+            </form>
+        </div>
+        <div id="image">
+            <img src="/pic/s4.png" alt="sorry" width="500" height="500">
+        </div>
+    </div>
+
+</body>
+
+</html>

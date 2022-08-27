@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
+html{
+    font-size: 62.5%;
+}
+
+h1{
+    font-size: 40px;
+    color: black;
+    font-family: 'Macondo', cursive;
+}
+h2{
+    font-family: 'Cairo', sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+#sign{
+    height: 58rem;
+    width: 67vw;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1rem;
+    box-shadow: -7px 7px 20px rgb(112, 116, 108);
+}
+#search{
+    font-size: 20px;
+    color: white;
+    box-shadow: 3px 3px 5px rgb(52, 53, 52);
+    background-color: rgb(14, 15, 12);
+    margin: 10px 30px 10px 0px;
+    height: 40px;
+    cursor: pointer;
+}
+#searchgoogle{
+    font-size: 20px;
+    color: white;
+    box-shadow: 3px 3px 5px rgb(52, 53, 52);
+    background-color: rgb(255, 255, 255);
+    margin: 10px 30px 10px 0px;
+    height: 40px;
+    cursor: pointer;
+}
+#search a{
+    color: aliceblue;
+    text-decoration: none;
+}
+#searchgoogle a{
+    color: rgb(4, 21, 169);
+    text-decoration: none;
+}
+#input{
+    display: inline-block;
+    font-size: 15px;
+    padding: 20px;
+    color: rgb(8, 105, 8);
+    
+}
+.name{
+    height: 32px;
+    box-shadow: 3px 3px 10px rgb(202, 194, 194);
+    border-radius: 4px;
+    background-color: azure;
+    border-style: none;
+}
+#image{
+    float: right;
+}
+#google{
+    font-size: 20px;
+    margin-left: 100px;
+    background-color: rgb(100, 5, 124);
+    color: rgb(255, 255, 255);
+    box-shadow: 3px 3px 5px rgb(78, 9, 78);
+    margin-top: 10px;
+    height: 40px;
+    cursor: pointer;
+}
+body{
+    background-color: black;
+    color: rgb(255, 255, 255);
+}
+.noty-message{
+    font-size: 30px;
+}

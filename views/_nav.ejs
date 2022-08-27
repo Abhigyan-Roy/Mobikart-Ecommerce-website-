@@ -1,0 +1,28 @@
+<nav>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Brands</a>
+            <div class="sub-menu">
+                <ul class="sub-menu">
+                    <li><a href="/cart/iphone">iphone</a></li>
+                    <li><a href="">samsung</a></li>
+                    <li><a href="">realme</a></li>
+                    <li><a href="/cart/oppo">oppo</a></li>
+                    <li><a href="/cart/vivo">vivo</a></li>
+                    <li><a href="">oneplus</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">Stores</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
+    </ul>
+    <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
+    <div class="countitems">0</div>
+    <% if(locals.user){%>
+        <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></button></a>
+    <%} else{%>
+        <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
+    <%}%>
+    <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
+</nav>
