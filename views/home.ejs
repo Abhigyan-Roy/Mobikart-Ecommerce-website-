@@ -1,14 +1,17 @@
-
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobiKart</title>
+    <title>MobiCart</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="slidein.css">
+    <link rel="stylesheet" href="chatbox.css">
     <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -33,30 +36,31 @@
         </ul>
         <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
         <%if(locals.user){%>
-         <% if(cart==null || cart.items.length==0){%>
-             <div class="countitems">0</div>
-         <%} else{%>
-            <%  let totalQty=0;
-                for(let i = 0; i < cart.items.length; i++){
-                let product = cart.items[i];
-                totalQty+=product.qty;  
-            %>
-            <%}%>
-            <div class="countitems"><%=totalQty%></div>
-          <%}%>
-        <%}%>
-        <% if(locals.user){%>
-            <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></button></a>
-        <%} else{%>
-            <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
-        <%}%>
-        <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
+            <% if(cart==null || cart.items.length==0){%>
+                <div class="countitems">0</div>
+                <%} else{%>
+                    <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i];
+                        totalQty+=product.qty; %>
+                        <%}%>
+                            <div class="countitems">
+                                <%=totalQty%>
+                            </div>
+                            <%}%>
+                                <%}%>
+                                    <% if(locals.user){%>
+                                        <a href="/users/profile"><button class="cart2"><i
+                                                    class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></button></a>
+                                        <%} else{%>
+                                            <a href="/users/sign-in"><button class="cart2"><i
+                                                        class="fa-solid fa-user"></i></button></a>
+                                            <%}%>
+                                                <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
     </nav>
     <header>
         <div class="heading">
             <div class="head">
                 <img src="pic/sc3.png" alt="" class="logo" width="220" height="110">
-                <h1>MobiKart</h1>
+                <h1>MobiCart</h1>
             </div>
             <div class="line"></div>
             <h3>Search, Compare, Buy...</h3>
@@ -187,15 +191,21 @@
             <h2>Shop By Brands</h2>
         </div>
         <div class="shop">
-            <div class="brandname"><a href="/cart/vivo"><img src="pic/br1.jpg" alt="" width="180" height="80" data-aos="flip-left"></a></div>
-            <div class="brandname"><a href="/cart/oppo"><img src="pic/br2.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
-            <div class="brandname"><a href="/cart/samsung"><img src="pic/br3.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
-            <div class="brandname"><a href="/cart/realme"><img src="pic/br4.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
-            <div class="brandname"><a href="/cart/oneplus"><img src="pic/br5.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
-            <div class="brandname"><a href="/cart/iphone"><img src="pic/br6.png" alt="" width="180" height="80" data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/vivo"><img src="pic/br1.jpg" alt="" width="180" height="80"
+                        data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/oppo"><img src="pic/br2.png" alt="" width="180" height="80"
+                        data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/samsung"><img src="pic/br3.png" alt="" width="180" height="80"
+                        data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/realme"><img src="pic/br4.png" alt="" width="180" height="80"
+                        data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/oneplus"><img src="pic/br5.png" alt="" width="180" height="80"
+                        data-aos="flip-left"></a></div>
+            <div class="brandname"><a href="/cart/iphone"><img src="pic/br6.png" alt="" width="180" height="80"
+                        data-aos="flip-left"></a></div>
         </div>
         <div class="brands">
-            <h2>Top Reasons to Buy from Mobikart</h2>
+            <h2>Top Reasons to Buy from MobiCart</h2>
         </div>
         <div class="shop">
             <div class="reasons"><img src="pic/r1.png" alt="" width="220" height="130"></div>
@@ -203,44 +213,93 @@
             <div class="reasons"><img src="pic/r3.png" alt="" width="200" height="160"></div>
         </div>
     </main>
-    <footer>
-        <div class="foot1">
-           Back To Top
-        </div>
-        <div class="foot2">
-            <div id="first">
-                <h2>MobiKart</h2>
-                <p>Mobikart is an Online eCommerce store where users can buy awesome, unique and latest products from all over the world in India.</p>
+    <%if(locals.user){%>
+        <div class="chat-box">
+            <!-- client -->
+            <div class="client">
+                <img src="<%=user.avatar%>" alt="logo" />
+                <div class="client-info">
+                    <h1><%=user.name%></h1>
+                    <h2><p>online</p></h2>
+                </div>
             </div>
-            <div id="first">
-                <h2>Find In Last</h2>
-                <p><ul>
-                    <li>FAQs</li>
-                    <li>Press</li>
-                    <li>Blog</li>
-                    <li>Order Tracking</li>
-                </ul></p>
-            </div>
-            <div id="first">
-                <h2>Information</h2>
-                <p><ul>
-                    <li>Terms & Conditions</li>
-                    <li>Privacy Policy</li>
-                    <li>Shipping Policy</li>
-                    <li>Return & Refund Policy</li>
-                </ul></p>
-            </div>
-        </div>
-    </footer>
-    
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000
-        });
-    </script>
-    <script src="first.js"></script>
 
+            <!-- main chat section -->
+            <div class="chats">
+                <div class="incoming">Hi!</div>
+                <div class="incoming">How can i help you?</div>
+            </div>
+
+            <!-- input field section -->
+            <div class="chat-input">
+                <input type="text" placeholder="Enter Message" id="textarea" />
+                
+                <button class="send-btn">
+                    <img src="pic/send1.png" alt="send-btn">
+                </button>
+                <button class="voice-on">
+                    <img src="pic/mic.png" alt="voice-btn">
+                </button>
+                <div class="instructions">Start</div>
+            </div>
+        </div>
+
+        <!-- button -->
+        <div class="chat-btn">
+            <img src="pic/Circle-icons-chat3.png" alt="chat box icon btn">
+        </div>
+        <%}%>
+            <footer>
+                <div class="foot1">
+                    Back To Top
+                </div>
+                <div class="foot2">
+                    <div id="first">
+                        <h2>MobiCart</h2>
+                        <p>MobiCart is an Online eCommerce store where users can buy awesome and latest SmartPhones
+                            from all over the world in India.</p>
+                    </div>
+                    <div id="first">
+                        <h2>Find In Last</h2>
+                        <p>
+                        <ul>
+                            <li>FAQs</li>
+                            <li>Press</li>
+                            <li>Order Tracking</li>
+                        </ul>
+                        </p>
+                    </div>
+                    <div id="first">
+                        <h2>Information</h2>
+                        <p>
+                        <ul>
+                            <li>Terms & Conditions</li>
+                            <li>Shipping Policy</li>
+                            <li>Return & Refund Policy</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </footer>
+
+            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            <script>
+                AOS.init({
+                    duration: 1000
+                });
+            </script>
+            <script src="first.js"></script>
+            <script src="voice.js"></script>
+            <script src="https://cdn.socket.io/4.5.3/socket.io.min.js" integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi" crossorigin="anonymous"></script>
+            <script src="chat_engine.js"></script>
+            <script>
+                $(document).ready(() => {
+                    $(".chat-btn").click(() => {
+                        $(".chat-box").fadeToggle(250)
+                    })
+                })
+            </script>
+            
 </body>
-</html>
 
+</html>

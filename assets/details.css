@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
-
 *{
     box-sizing: border-box;
     padding: 0;
@@ -11,8 +10,9 @@ body{
     color: #ddd;
     font-family: 'Cairo', sans-serif;
 }
+
 .card-wrapper{
-    max-width: 1100px;
+    max-width: 80vw;
     margin: 0 auto;
 }
 .card-wrapper img{
@@ -46,6 +46,7 @@ body{
 }
 .product-content{
     padding: 2rem 1rem;
+    margin-top: 8rem;
 }
 .product-title{
     font-size: 1.8rem;
@@ -75,6 +76,9 @@ body{
     color: #fff;
     padding: 0 0.3rem;
     transition: all 0.5s ease;
+}
+#outputd{
+    color: #ddd;
 }
 .product-link:hover{
     opacity: 0.9;
@@ -133,13 +137,16 @@ body{
 }
 .purchase-info input,
 .purchase-info .btn{
-    border: 1.5px solid #ddd;
+    border: none;
     border-radius: 25px;
     text-align: center;
-    padding: 0.45rem 0.8rem;
+    padding: 1rem 2.5rem;
     outline: 0;
-    margin-right: 0.2rem;
-    margin-bottom: 1rem;
+    font-size: 15px;
+}
+.button-container{
+    display: flex;
+    justify-content: space-evenly;
 }
 .purchase-info input{
     width: 60px;
@@ -147,15 +154,16 @@ body{
 .purchase-info .btn{
     cursor: pointer;
     color: #fff;
+    transition: 0.2s ease;
 }
-.purchase-info .btn:first-of-type{
-    background: #256eff;
+.purchase-info .btn1:last-of-type{
+    background: #be3335;
 }
-.purchase-info .btn:last-of-type{
-    background: #f64749;
+.purchase-info .btn2:last-of-type{
+    background: #029f0c;
 }
 .purchase-info .btn:hover{
-    opacity: 0.9;
+    transform: scale(1.06);
 }
 .social-links{
     display: flex;
@@ -270,6 +278,119 @@ nav {
 }
 .navigate ul {
     list-style: none;
+}
+.comments-list{
+    color: white;
+    width: 75vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.ratings{
+    width: 100vw;
+    min-height: 70vh;
+    margin-top: 40vh;
+    margin-left: 10vw;
+}
+.product-comments{
+    width: 75vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.product-comments #textarea{
+    width: 60vw;
+    padding: 0.5rem;
+    height: 5vh;
+}
+.product-comments #btnn{
+    height: 5vh;
+    padding: 0.2rem;
+    background-color: #ffc107;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.rating-wrap{
+	width: 220px;
+    height: 150px;
+}
+
+.center{
+	width: 500px; 
+	margin: auto;
+}
+
+
+#rating-value{	
+	width: 110px;
+	margin: 40px auto 0;
+	padding: 10px 5px;
+	text-align: center;
+}
+
+/*styling star rating*/
+.rating{
+	border: none;
+	float: left;
+    color: #ffffff;
+}
+
+.rating > input{
+	display: none;
+}
+
+.rating > label:before{
+	content: '\f005';
+	font-family: FontAwesome;
+	margin: 5px;
+	font-size: 1.5rem;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.rating > .half:before{
+	content: '\f089';
+	position: absolute;
+	cursor: pointer;
+}
+
+
+.rating > label{
+	color: #ddd;
+	float: right;
+	cursor: pointer;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover, 
+.rating:not(:checked) > label:hover ~ label{
+	color: #ffff07;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label{
+	color: #f0f006;
+}
+.name{
+    width: 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.name a{
+    color: #fff;
+}
+.comment{
+    padding: 10px;
+    margin-left: 20px;
+    font-family: cursive;
 }
 @media screen and (min-width: 992px){
     .card{

@@ -2,6 +2,7 @@ const express=require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 7500;
+const http = require('http').createServer(app);
 const path=require('path');
 const expressLayouts = require('express-ejs-layouts');
 //used to connect the database
@@ -74,7 +75,15 @@ app.use(flash());
 app.use(customMware.setFlash);
 
 app.use('/', require('./routes'));
+const io = require('socket.io')(http);
 
+io.on('connection', (socket) => {
+    console.log('Connected...')
+    socket.on('message', (msg) => {
+        socket.broadcast.emit('message', msg)
+    })
+
+})
 app.listen(port, function(err){
     if (err){
         console.log(`Error in running the server: ${err}`);

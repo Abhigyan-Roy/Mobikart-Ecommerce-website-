@@ -5,7 +5,6 @@ const proController = require('../controllers/product_controller');
 
 router.get('/', proController.productShow);
 router.get('/admin', proController.adminpage);
-router.post('/admin/edit/:id', proController.editdetails);
 router.post('/create',proController.create);
 router.post('/add-to-cart/:id', proController.addToCart);
 router.get('/increase/:id', proController.increase);

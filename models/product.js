@@ -1,10 +1,43 @@
 const mongoose = require('mongoose');
+const Comment=require('../models/comment');
 const productSchema = new mongoose.Schema({
     imagePath:{
         type: String,
         required: true
     },
+    bigImg:{
+        type:String,
+        required: true
+    },
+    frontcam:{
+        type: String,
+        required: true
+    },
+    rearcam:{
+        type: String,
+        required: true
+    },
+    Android:{
+        type: String,
+        required: true
+    },
+    battery:{
+        type: Number,
+        required: true
+    },
+    processor:{
+        type: String,
+        required: true
+    },
+    seller:{
+        type: String,
+        required: true
+    },
     brand:{
+        type: String,
+        required: true
+    },
+    color:{
         type: String,
         required: true
     },
@@ -20,6 +53,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    longdesc:{
+        type: String,
+        required: true
+    },
     mrp:{
         type: Number,
         required: true
@@ -27,7 +64,13 @@ const productSchema = new mongoose.Schema({
     price:{
         type: Number,
         required: true
-    }
+    },
+    comments:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
 });
 const Product = mongoose.model('Product', productSchema);
 

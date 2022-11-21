@@ -172,7 +172,8 @@ li button {
 .addpro{
     padding: 10px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    
 }
 .addpro input{
     height: 30px;

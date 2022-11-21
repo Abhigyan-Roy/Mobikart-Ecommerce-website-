@@ -1,6 +1,5 @@
 const Product=require('../models/product');
 const User = require('../models/user');
-const Detail=require('../models/prodetails');
 const Publishable_Key = 'pk_test_51LWOEuSGMtzrB9e9nndOhmStMAuLvn5yRN2gzd02QDkkXWPi2T38t7mDTb9Y5ggw4DchTjGeorTzKqiPKV3OkNAL00lQgSQrba';
 
 //it controls the add to cart function for a user
@@ -91,20 +90,22 @@ module.exports.productShow= function(req, res){
 
     })
 }
+
 module.exports.showDetails= function(req, res){
-    Product.findById(req.params.id, function(err, product){
-        if(err){
-            console.log("error in fetching details");
-            return;
+    Product.findById(req.params.id)
+    .populate({
+        path:'comments',
+        populate:{
+            path:'user'
         }
+    })
+    .exec(function(err,product){
         return res.render('detailedpro',{
             title: "Product Details",
             product: product
         });
-
-    })
+    });
 }
-
 //to increase quantity of a item in cart
 exports.increase = (req, res, next) => {
     req.user.increaseQty(req.params.id)
@@ -139,10 +140,19 @@ module.exports.adminpage=function(req, res){
 module.exports.create= function(req, res){
     Product.create({
         imagePath: req.body.imagePath,
+        bigImg:req.body.bigImg,
+        frontcam:req.body.frontcam,
+        rearcam:req.body.rearcam,
+        Android:req.body.Android,
+        seller:req.body.seller,
+        battery:req.body.battery,
+        processor:req.body.processor,
         brand: req.body.brand,
+        color: req.body.color,
         storage: req.body.storage,
         ram: req.body.ram,
         desc: req.body.desc,
+        longdesc: req.body.longdesc,
         mrp: req.body.mrp,
         price: req.body.price
     }, function(err, product){
@@ -152,26 +162,7 @@ module.exports.create= function(req, res){
             return res.redirect('back');
     });
 }
-module.exports.editdetails=function(req, res){
-    Product.findById(req.params.id,function(err, product){
-        if(product){
-            Detail.create({
-                imageRoute:req.body.imageRoute,
-                frontcam:req.body.frontcam,
-                rearcam:req.body.rearcam,
-                Android:req.body.Android,
-                battery:req.body.battery,
-                processor:req.body.processor,
-                product:req.params.id
-            },function(err, detail){
-                if(err){console.log('Error in updating details!')
-                    return;}
-                    console.log('***', detail);
-                    return res.redirect('back');
-            });
-        }
-    });
-}
+
 //to delete a product from database
 module.exports.destroy=function(req,res){
     Product.findById(req.params.id, function(err, product){
@@ -212,3 +203,4 @@ module.exports.company= function(req, res){
         })
     }
 }
+
