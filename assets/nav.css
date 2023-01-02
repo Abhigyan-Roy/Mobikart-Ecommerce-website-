@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
 html {
     font-size: 62.5%;
 }
@@ -11,6 +12,9 @@ html {
     width: 100vw;
     height: 30vh;
 }
+body{
+    font-family: 'Cairo', sans-serif;
+}
 nav {
     display: flex;
     position: absolute;
@@ -20,22 +24,40 @@ nav {
     padding: 1.6rem;
     justify-content: center;
 }
-.nav-links {
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.8rem;
+}
+
+ul {
+    list-style: none;
+}
+.sub-menu{                                                 /*menu inside a menu*/
+    display: none;
+    color: white;
+}
+.nav-links {                                              /*ul class for navigation bar*/
     display: flex;
     align-items: center;
    
 }
-.sub-menu{
-    display: none;
-    color: white;
+.nav-links li i{
+   color: white;
+   cursor: pointer;
 }
 .nav-links li:hover .sub-menu{
     display: block;
     position: absolute;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: -48px;
 }
-.nav-links li:hover .sub-menu li{
+.nav-links li:hover .sub-menu ul{
+    display: block;
+    margin: 10px;
+}
+.nav-links li:hover .sub-menu ul li{
     padding: 8px;
     width: 150px;
     font-size: 10px;
@@ -44,28 +66,7 @@ nav {
 .nav-links li {
     margin: 0 4rem;
 }
-.cart1{
-    position: absolute;
-    top: 1.5rem;
-    right: 7rem;
-}
-.cart2{
-    position: absolute;
-    top: 1.8rem;
-    right: 14rem;
-    border-radius: 20px;
-    padding: 10px;
-    font-size: 15px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    cursor: pointer;
-}
-.menu-btn{
-    position: absolute;
-    top: 1.8rem;
-    right: 3rem;
-    cursor: pointer;
-    display: none;
-}
+
 li button {
     background-color: rgb(52, 51, 51);
     color: whitesmoke;
@@ -74,11 +75,70 @@ li button {
     border-radius: 2rem;
     font-size: 1.5rem;
 }
-a {
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 1.8rem;
+.menu-btn{
+    position: absolute;
+    top: 2.2rem;
+    right: 2.8rem;
+    cursor: pointer;
+    width: 4rem;
+    height: 3.8rem;
+    display: none;
 }
-ul {
-    list-style: none;
+.cart1{
+    position: absolute;
+    top: 1.4rem;
+    right: 7.5rem;
+}
+.cart2{
+    position: absolute;
+    top: 1.5rem;
+    right: 14rem;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    cursor: pointer;
+}
+@media screen and (max-width:998px) {
+    html{
+        font-size: 55%;
+    }
+    nav{
+        padding: 0;
+    }
+    .menu-btn{
+        display: block;
+        z-index: 2;
+    }
+    .nav-links{
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        background-color: rgb(53, 7, 77);
+        margin-top: -2000rem;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+    .nav-links li{
+        margin: 3rem auto;
+    }
+    .mobile-menu{
+        margin-top: 0rem;
+    }
+    .cart1{
+        right: 9rem;
+    }
+    .cart2{
+        right: 17rem;
+    }
+    .countitems{
+        top: 4.4rem;
+        right: 8.2rem;
+    }
+}
+@media screen and (max-width:768px) {
+    html{
+        font-size: 45%;
+    }
 }

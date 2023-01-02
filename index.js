@@ -1,10 +1,13 @@
 const express=require('express');
+require("dotenv").config();
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = 7500;
+const env=require('./config/environment');
+const port = process.env.PORT || 7500 ;
 const http = require('http').createServer(app);
 const path=require('path');
 const expressLayouts = require('express-ejs-layouts');
+const logger = require('morgan');
 //used to connect the database
 const db = require('./config/mongoose');
 
@@ -46,10 +49,10 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static('assets'));
+app.use(express.static(env.asset_path));
 
 app.use(expressLayouts);
-
+app.use(logger(env.morgan.mode, env.morgan.options));
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
@@ -57,7 +60,7 @@ app.use('/uploads',express.static(__dirname+'/uploads'));
 
 app.use(
     session({
-        secret: 'Ecommerce',
+        secret: env.session_cookie,
         resave: false,
         saveUninitialized: false,
         store: MongoDbStore.create({

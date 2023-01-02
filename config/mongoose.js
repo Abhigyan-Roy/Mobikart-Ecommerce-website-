@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const env=require('./environment');
 
 //connect to the database
-mongoose.connect('mongodb://localhost/MobiKart_db');
+mongoose.connect(env.db);
 
 //acquire the connection(to check if it's successful)
 const db = mongoose.connection;

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCart</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="slidein.css">
     <link rel="stylesheet" href="chatbox.css">
@@ -54,7 +55,8 @@
                                             <a href="/users/sign-in"><button class="cart2"><i
                                                         class="fa-solid fa-user"></i></button></a>
                                             <%}%>
-                                                <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
+                                                <img src="/pic/menu2.png" alt="" class="menu-btn" width="40"
+                                                    height="50">
     </nav>
     <header>
         <div class="heading">
@@ -65,11 +67,12 @@
             <div class="line"></div>
             <h3>Search, Compare, Buy...</h3>
             <div class="search-container">
-                <input type="text" name="" placeholder="Search....">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <form>
+                    <input type="text" name="search" placeholder="Search....">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
             </div>
             <div class="logos">
-
                 <img src="pic/l2.png" alt="" width="60" height="50">
                 <img src="pic/l1.png" alt="" width="60" height="50">
                 <img src="pic/l5.png" alt="" width="70" height="80">
@@ -83,105 +86,107 @@
         <div class="brands" data-aos="fade-right">
             <h2>Premium SmartPhone Deals</h2>
         </div>
-        <div class="brands-card">
-            <div class="card" data-aos="fade-down">
-                <div class="one"><img src="pic/p3.png" alt="" width="200" height="190"></div>
-                <div class="two">
-                    <h2>iPhone 13</h2>
-                    <h4>128GB</h4>
-                    <h3><s>₹ 79,900</s>&nbsp;&nbsp;&nbsp;₹ 67,990</h3>
-                    <h3></h3>
-                    <form action="/add-to-cart/add" method="post">
-                        <button type="submit">add to cart</button>
-                    </form>
+        <div class="card-container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="pic/p3.webp" data-aos="fade-down" />
+                            <div class="two">
+                                <h2>S22 Ultra 5G</h2>
+                                <h4>256GB</h4>
+                                <h3><s>₹ 75,990</s>&nbsp;&nbsp;&nbsp;₹ 71,900</h3>
+                                <h3></h3>
+                                <form action="/add-to-cart/add" method="post">
+                                    <button type="submit">add to cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="pic/p5.webp" data-aos="fade-down" />
+                            <div class="two">
+                                <h2>Xiomi 12 Pro</h2>
+                                <h4>256GB</h4>
+                                <h3><s>₹ 69,999</s>&nbsp;&nbsp;&nbsp;₹ 63,999</h3>
+                                <h3></h3>
+                                <form action="/add-to-cart/add" method="post">
+                                    <button type="submit">add to cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="pic/p3.png" data-aos="fade-down" />
+                            <div class="two">
+                                <h2>iPhone 13</h2>
+                                <h4>128GB</h4>
+                                <h3><s>₹ 79,900</s>&nbsp;&nbsp;&nbsp;₹ 67,990</h3>
+                                <h3></h3>
+                                <form action="/add-to-cart/add" method="post">
+                                    <button type="submit">add to cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card" data-aos="fade-up">
-                <div class="one"><img src="pic/p3.webp" alt="" width="300" height="190"></div>
-                <div class="two">
-                    <h2>S22 Ultra 5G</h2>
-                    <h4>256GB</h4>
-                    <h3><s>₹ 75,990</s>&nbsp;&nbsp;&nbsp;₹ 71,900</h3>
-                    <h3></h3>
-                    <form action="/add-to-cart/add" method="post">
-                        <button type="submit">add to cart</button>
-                    </form>
-                </div>
-            </div>
-            <div class="card" data-aos="fade-up">
-                <div class="one"><img src="pic/p4.webp" alt="" width="300" height="200"></div>
-                <div class="two">
-                    <h2>S22 Ultra 5G</h2>
-                    <h4>512GB</h4>
-                    <h3><s>₹ 1,18,990</s>&nbsp;&nbsp;&nbsp;₹ 1,08,900</h3>
-                    <h3></h3>
-                    <form action="/add-to-cart/add" method="post">
-                        <button type="submit">add to cart</button>
-                    </form>
-                </div>
-            </div>
-            <div class="card" data-aos="fade-down">
-                <div class="one"><img src="pic/p5.webp" alt="" width="280" height="190"></div>
-                <div class="two">
-                    <h2>Xiomi 12 Pro</h2>
-                    <h4>256GB</h4>
-                    <h3><s>₹ 69,999</s>&nbsp;&nbsp;&nbsp;₹ 63,999</h3>
-                    <h3></h3>
-                    <form action="/add-to-cart/add" method="post">
-                        <button type="submit">add to cart</button>
-                    </form>
-                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
+
         <div class="check">
             <button data-aos="fade-right">See More...</button>
         </div>
         <div class="brands" data-aos="zoom-in-down" data-aos-duration="600">
             <h2>New Launches</h2>
         </div>
-        <div class="brands-card">
-            <div class="card">
-                <div class="one"><img src="pic/p6.png" alt="" width="160" height="190" data-aos="fade-up"></div>
-                <div class="two">
-                    <h2>Galaxy M53 5G</h2>
-                    <h4>6GB+128GB</h4>
-                    <h4>108 MP Quad Camera</h4>
-                    <h3>Starting at ₹ 28,499</h3>
-                    <button type="submit">checkout here</button>
+        <div class="card-container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="pic/p8.png" width="240" data-aos="fade-up" />
+                            <div class="two">
+                                <h2>Vivo X80</h2>
+                                <h4>8GB+128GB | 12GB+256GB</h4>
+                                <h4>50 MP Quad Camera</h4>
+                                <h3>Starting at ₹ 54,999</h3>
+                                <button type="submit">checkout here</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="pic/p6.webp" data-aos="fade-up" />
+                            <div class="two">
+                                <h2>Oppo F21 Pro</h2>
+                                <h4>8GB+128GB</h4>
+                                <h4>64 MP Tri Camera</h4>
+                                <h3>Starting at ₹ 26,999</h3>
+                                <button type="submit">checkout here</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="pic/p6.png" data-aos="fade-up" />
+                            <div class="two">
+                                <h2>Galaxy M53 5G</h2>
+                                <h4>6GB+128GB</h4>
+                                <h4>108 MP Quad Camera</h4>
+                                <h3>Starting at ₹ 28,499</h3>
+                                <button type="submit">checkout here</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="one"><img src="pic/p7.png" alt="" width="270" height="250"
-                        style="position: relative; top: -3rem;" data-aos="fade-up"></div>
-                <div class="two">
-                    <h2>OnePlus Nord CE 2 Lite</h2>
-                    <h4>6GB+128GB | 8GB+128GB</h4>
-                    <h4>64 MP Tri Camera</h4>
-                    <h3>Starting at ₹ 19,499</h3>
-                    <button type="submit">checkout here</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="one"><img src="pic/p8.png" alt="" width="240" height="225"
-                        style="position: relative; top: -1.1rem;" data-aos="fade-up"></div>
-                <div class="two">
-                    <h2>Vivo X80</h2>
-                    <h4>8GB+128GB | 12GB+256GB</h4>
-                    <h4>50 MP Quad Camera</h4>
-                    <h3>Starting at ₹ 54,999</h3>
-                    <button type="submit">checkout here</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="one"><img src="pic/p6.webp" alt="" width="260" height="250"
-                        style="position: relative; top: -2rem;" data-aos="fade-up"></div>
-                <div class="two">
-                    <h2>Oppo F21 Pro</h2>
-                    <h4>8GB+128GB</h4>
-                    <h4>64 MP Tri Camera</h4>
-                    <h3>Starting at ₹ 26,999</h3>
-                    <button type="submit">checkout here</button>
-                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
         <div class="check">
@@ -219,8 +224,12 @@
             <div class="client">
                 <img src="<%=user.avatar%>" alt="logo" />
                 <div class="client-info">
-                    <h1><%=user.name%></h1>
-                    <h2><p>online</p></h2>
+                    <h1>
+                        <%=user.name%>
+                    </h1>
+                    <h2>
+                        <p>online</p>
+                    </h2>
                 </div>
             </div>
 
@@ -233,7 +242,7 @@
             <!-- input field section -->
             <div class="chat-input">
                 <input type="text" placeholder="Enter Message" id="textarea" />
-                
+
                 <button class="send-btn">
                     <img src="pic/send1.png" alt="send-btn">
                 </button>
@@ -281,7 +290,41 @@
                     </div>
                 </div>
             </footer>
+            <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    speed: 1000,
+                    slidesPerGroup: 3,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    breakpoints: {
+                        // when window width is >= 320px
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 20
+                        },
+                        540: {
+                            slidesPerView: 2,
+                            spaceBetween: 20
+                        },
+                        864: {
+                            slidesPerView: 3,
+                            spaceBetween: 20
+                        }
+                    }
+                });
+            </script>
             <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
             <script>
                 AOS.init({
@@ -290,7 +333,9 @@
             </script>
             <script src="first.js"></script>
             <script src="voice.js"></script>
-            <script src="https://cdn.socket.io/4.5.3/socket.io.min.js" integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi" crossorigin="anonymous"></script>
+            <script src="https://cdn.socket.io/4.5.3/socket.io.min.js"
+                integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi"
+                crossorigin="anonymous"></script>
             <script src="chat_engine.js"></script>
             <script>
                 $(document).ready(() => {
@@ -299,7 +344,7 @@
                     })
                 })
             </script>
-            
+
 </body>
 
 </html>
