@@ -1,0 +1,71 @@
+<head>
+    <link rel="stylesheet" href="/cart.css">
+    <link rel="stylesheet" href="/myorder.css">
+    <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+    <style>
+      option{
+        color: black;
+      }
+      button{
+        color: black;
+      }
+      select{
+        color: black;
+      }
+      tr{
+        height: 10rem;
+      }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Items</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Update Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let groupedOrders = {}; %>
+          <% orders.forEach(function(order) { %>
+            <% if (!groupedOrders[order._id]) { %>
+              <% groupedOrders[order._id] = { order: order, items: [] }; %>
+            <% } %>
+            <% groupedOrders[order._id].items.push(order.items[0]); %>
+          <% }); %>
+          <% for (let orderId in groupedOrders) { %>
+            <% let order = groupedOrders[orderId].order; %>
+            <% let items = groupedOrders[orderId].items; %>
+            <tr>
+              <td><%= order._id %></td>
+              <td>
+                <% items.forEach(function(item) { %>
+                  <%= item.productId.desc %><br>
+                <% }); %>
+              </td>
+              <td><%= items.reduce((total, item) => total + item.qty, 0) %></td>
+              <td> ₹ <%= items[0].productId.price %></td>
+              <td><%= order.status %></td>
+              <td>
+                <form action="/cart/admin/update" method="post">
+                  <input type="hidden" name="orderId" value="<%= order._id %>">
+                  <select name="status">
+                    <option value="Order Placed" <%= order.status === "Order Placed" ? "selected" : "" %>>Order Placed</option>
+                    <option value="Shipped" <%= order.status === "Shipped" ? "selected" : "" %>>Shipped</option>
+                    <option value="Delivered" <%= order.status === "Delivered" ? "selected" : "" %>>Delivered</option>
+                    <option value="Cancelled" <%= order.status === "Cancelled" ? "selected" : "" %>>Cancelled</option>
+                  </select>
+                  <button type="submit">Update</button>
+                </form>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>        
+      </table>
+      
+</body>
+

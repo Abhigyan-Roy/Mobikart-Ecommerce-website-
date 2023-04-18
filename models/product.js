@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Comment=require('../models/comment');
+const Rating=require('../models/rating');
 const productSchema = new mongoose.Schema({
     imagePath:{
         type: String,
@@ -65,6 +66,12 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    ratings:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Rating'
+        }
+    ],
     comments:[
         {
             type: mongoose.Schema.Types.ObjectId,

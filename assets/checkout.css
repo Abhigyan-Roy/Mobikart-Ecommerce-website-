@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
+.container{
+    padding: 20px;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Cairo', sans-serif;
+}
+:root{
+	--khaki: #2d2151;
+	--khakiDark: #BDB76B;
+	--darkStaleGray: #c7d6d6;
+	--white: #FFFFFF;
+}
+
+main .checkout-page .billing-detail{
+	width: 60%;
+}
+main .checkout-page .billing-detail h4{
+	display: block;
+	color: var(--darkStaleGray);
+	background-color: var(--khaki);
+	text-transform: uppercase;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+main form.checkout-form .form-group{
+	margin: 10px 5px;
+	width: calc(100% - 10px);
+}
+main form.checkout-form label{
+	color: var(--darkStaleGray);
+	display: block;
+	margin-bottom: 6px;
+}
+main form.checkout-form .form-group input,
+main form.checkout-form .form-group select,
+main form.checkout-form .form-group textarea{
+	width: 100%;
+	padding: 8px 5px
+}
+main form.checkout-form input:focus,
+main form.checkout-form select:focus,
+main form.checkout-form textarea:focus{
+	outline: 1px solid var(--darkStaleGray);
+}
+main form.checkout-form .form-inline{
+	display: flex;
+	justify-content: space-between;
+}
+main form.checkout-form .form-inline .form-group{
+	width: 48%;
+}
+main .order-summary{
+	width: 30%;
+	height: 500px;
+	padding: 5px;
+	border: 1px solid rgba(236, 240, 241,0.3);
+}
+main .order-summary .checkout-total span{
+	float: right;
+}
+main .order-summary .checkout-total textarea{
+	width: 100%;
+	resize: none;
+	display: none;
+	font-size: 12px;
+	padding: 5px;
+}
+main .order-summary .checkout-total h3{
+	background-color: var(--darkStaleGray);
+	color: var(--khaki);
+	text-transform: uppercase;
+	padding: 10px;
+}
+main .order-summary .checkout-total ul{
+	list-style: none;
+	padding: 10px;
+}
+main .order-summary .checkout-total ul li{
+	margin-bottom: 10px;
+}
+main .order-summary .checkout-total ul li input[type="radio"]{
+	width: 15px;
+	height: 15px;
+	position: relative;
+	appearance: none;
+	outline: none;
+	margin-right: 5px;
+}
+main .order-summary .checkout-total ul li input[type="radio"]:after{
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 2px;
+	border: 1px solid var(--khaki);
+	border-radius: 50%;
+	padding: 2px;
+	box-sizing: border-box;
+	background-clip: content-box;
+}
+main .order-summary .checkout-total ul li input:checked[type="radio"]:after{
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 2px;
+	background: var(--darkStaleGray);
+	border-radius: 50%;
+	padding: 2px;
+	box-sizing: border-box;
+	background-clip: content-box;
+}
+main .order-summary .checkout-total ul li input[type="submit"]{
+	background-color: var(--khaki);
+	color: var(--darkStaleGray);
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	padding: 5px 8px;
+	margin-top: 20px;
+	display: block;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+main .order-summary .checkout-total ul li input[type="submit"]:hover{
+	background-color: var(--darkStaleGray);
+	color: var(--khaki);
+}
+main .checkout-page{
+	/*max-height: 680px;*/
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+main .cart-summary{
+	width: 25%;
+	height: 220px;
+	padding: 5px;
+	border: 1px solid rgba(236, 240, 241,0.3);
+	margin-top: 28px;
+}
+main .cart-summary .checkout-total h3{
+	background-color: var(--darkStaleGray);
+	color: var(--khaki);
+	text-transform: uppercase;
+	padding: 10px;
+}
+main .cart-summary .checkout-total ul{
+	list-style: none;
+	padding: 10px;
+}
+main .cart-summary .checkout-total ul li{
+	margin-bottom: 10px;
+}
+main .cart-summary .checkout-total ul li a{
+	background-color: var(--khaki);
+	color: var(--darkStaleGray);
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	padding: 5px 8px;
+	margin-top: 20px;
+	display: block;
+}
+main .cart-summary .checkout-total ul li a:hover{
+	background-color: var(--darkStaleGray);
+	color: var(--khaki);
+}

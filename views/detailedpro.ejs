@@ -1,12 +1,9 @@
-<head>
-  <title>
+<title>
     <%=title%>
-  </title>
-  <link rel="stylesheet" href="/details.css">
-  <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
-  <script src="/star-ratings.js"></script>
-</head>
-
+</title>
+<link rel="stylesheet" href="/details.css">
+<script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
   <div class="navigate">
     <nav>
@@ -29,7 +26,19 @@
         <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
       </ul>
       <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
-      <div class="countitems">0</div>
+      <%if(locals.user){%>
+        <% if(cart==null || cart.items.length==0){%>
+            <div class="countitems">0</div>
+        <%} else{%>
+           <%  let totalQty=0;
+               for(let i = 0; i < cart.items.length; i++){
+               let product = cart.items[i];
+               totalQty+=product.qty;  
+           %>
+           <%}%>
+           <div class="countitems"><%=totalQty%></div>
+         <%}%>
+       <%}%>
       <% if(locals.user){%>
         <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%>
           </button></a>
@@ -50,9 +59,11 @@
         </div>
         <div class="button-container">
           <div class="purchase-info">
-            <button type="button" class="btn1 btn">
-              Add to Cart <i class="fas fa-shopping-cart"></i>
-            </button>
+            <form action="/cart/add-to-cart/<%=product._id%>" method="post">
+              <button type="submit" class="btn1 btn">
+                Add to Cart <i class="fas fa-shopping-cart"></i>
+              </button>
+          </form>
           </div>
           <div class="purchase-info">
             <button type="button" class="btn2 btn">
@@ -70,12 +81,16 @@
         </h2>
         <a href="#" class="product-link">visit <%=product.brand%> store</a>
         <div class="product-rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-          <span>4.7(21)</span>
+          <% for (let i = 0; i < 5; i++) { %>
+            <% if (i < Math.floor(avgRating)) { %>
+              <i class="star-icon filled fas fa-star"></i>
+            <% } else if (i < avgRating) { %>
+              <i class="star-icon filled fas fa-star-half"></i>
+            <% } else { %>
+              <i class="star-icon fas fa-star"></i>
+            <% } %>
+          <% } %>
+          <span><%=avgRating%>(<%=product.ratings.length%>)</span>
         </div>
         <form oninput="ans.value=parseInt(n1.value)+parseInt(n2.value)">
           <input type="hidden" name="n1" value="<%=product.mrp%>">
@@ -84,7 +99,8 @@
         </form>
         <div class="product-price">
           <p class="last-price">Old Price: <span>₹ <%=product.mrp%></span></p>
-          <p class="new-price">New Price: <span>₹ <%=product.price%> (5%)</span></p>
+          <% const percentageOff = ((product.mrp - product.price) / product.mrp * 100).toFixed(0); %>
+          <p class="new-price">New Price: <span>₹ <%=product.price%> (-<%=percentageOff%>%)</span></p>
         </div>
 
         <div class="product-detail">
@@ -146,38 +162,30 @@
       <%if(locals.user){%>
         <div class="rating-wrap">
           <h3>Give Your Star Rating:</h3>
-          <div class="center">
-            <fieldset class="rating">
-              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" class="full"
-                title="Awesome"></label>
-              <input type="radio" id="star4.5" name="rating" value="4.5" /><label for="star4.5" class="half"></label>
-              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" class="full"></label>
-              <input type="radio" id="star3.5" name="rating" value="3.5" /><label for="star3.5" class="half"></label>
-              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" class="full"></label>
-              <input type="radio" id="star2.5" name="rating" value="2.5" /><label for="star2.5" class="half"></label>
-              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" class="full"></label>
-              <input type="radio" id="star1.5" name="rating" value="1.5" /><label for="star1.5" class="half"></label>
-              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" class="full"></label>
-              <input type="radio" id="star0.5" name="rating" value="0.5" /><label for="star0.5" class="half"></label>
-            </fieldset>
-            <h4 id="rating-value"></h4>
+          <div class="rating-stars" id="rating-stars">
+            <i class="star-icon-inp fas fa-star" data-value="1"></i>
+            <i class="star-icon-inp fas fa-star" data-value="2"></i>
+            <i class="star-icon-inp fas fa-star" data-value="3"></i>
+            <i class="star-icon-inp fas fa-star" data-value="4"></i>
+            <i class="star-icon-inp fas fa-star" data-value="5"></i>
           </div>
-        </div>
-
+          <form action="/rate/create/<%=product._id%>" method="post">
+            <input type="hidden" name="rating" id="rating-give" value="0">
+            <input type="submit" value="Add Ratings" id="btnn">
+          </form>
         <form action="/comments/create/<%=product._id%>" method="post">
           <h3>Give Your Comment:</h3>
-          <input type="number" name="star" id="starcount" max="5" min="0">
           <input type="text" name="content" id="textarea">
           <input type="submit" value="Add comment" id="btnn">
         </form>
-        <%}%>
+        <br><br><br>
+      <%}%>
     </div>
     <div class="comments-list">
       <%for(comment of product.comments){%>
         <div class="name">
           <i class="fa-solid fa-user"></i>
           <h4><%=comment.user.name%></h4>
-          <p><%=comment.star%></p>
           <a href="/comments/destroy/<%=comment.id%>"><i class="fa-solid fa-delete-left fa-lg"></i></a>
         </div>
         <div class="comment">
@@ -186,6 +194,5 @@
       <%}%>
     </div>
   </div>
-
-
 </body>
+<script src="/show_star.js"></script>

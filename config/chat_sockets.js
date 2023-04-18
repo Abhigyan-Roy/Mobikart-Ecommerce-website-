@@ -1,25 +1,19 @@
-module.exports.chatSockets = function(socketServer){
-    let io = require('socket.io')(socketServer);
-
-    io.sockets.on('connection', function(socket){
-        console.log('new connection received', socket.id);
-
-        socket.on('disconnect', function(){
-            console.log('socket disconnected!');
-        });
-        socket.on('join_room', function(data){
-            console.log('joining request rec.', data);
-
-            socket.join(data.chatroom);
-
-            io.in(data.chatroom).emit('user_joined', data);
-        });
-
-        // CHANGE :: detect send_message and broadcast to everyone in the room
-        socket.on('send_message', function(data){
-            io.in(data.chatroom).emit('receive_message', data);
-        });
-
+function serverSide(io){
+    io.on('connection', function(socket){
+      console.log('connected with sockets',socket.id);
+      
+      let questions = {
+        'Hi': 'Hello!',
+        'How are you?': 'I am fine, thank you!',
+        'What is your name?': 'My name is ChatBot!'
+      };
+  
+      socket.on('message', (msg) => {
+        console.log('Message received:', msg);
+        let response = questions[msg] || 'I did not understand your question!';
+        socket.send(response);
+      });
     });
-
-}
+  }
+  
+  module.exports = serverSide;

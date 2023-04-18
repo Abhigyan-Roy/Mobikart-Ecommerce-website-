@@ -4,7 +4,10 @@ const router = express.Router();
 const proController = require('../controllers/product_controller');
 
 router.get('/', proController.productShow);
+router.get('/aboutus', proController.aboutUs);
 router.get('/admin', proController.adminpage);
+router.get('/admin/orders', proController.adminOrder);
+router.post('/admin/update', proController.updOrder);
 router.post('/create',proController.create);
 router.post('/add-to-cart/:id', proController.addToCart);
 router.get('/increase/:id', proController.increase);

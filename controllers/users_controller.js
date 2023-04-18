@@ -3,7 +3,8 @@ const userMailer=require('../mailers/signup_mailer');
 
 module.exports.profile = function(req, res){
         return res.render('profile', {
-            title: 'User Profile'
+            title: 'User Profile',
+            cart: req.user.cart
         });
     };
 
@@ -16,25 +17,30 @@ module.exports.editProfile = function(req, res){
     });
 }
 
-module.exports.update = async function(req, res){
-        try{
-            let user= await User.findByIdAndUpdate(req.params.id);
-            User.uploadedAvatar(req, res, function(err){
-                if(err){console.log('MULTER Error:', err);}
-                user.name=req.body.name;
-                if(req.file)
-                {
-                    user.avatar=User.avatarPath+'/'+req.file.filename;
-                }
-                user.save();
-                return res.redirect('back');
-            });
-        }catch(err){
-            req.flash('error',err);
+module.exports.update = async function(req, res) {
+    try {
+        let user = await User.findByIdAndUpdate(req.params.id);
+        User.uploadedAvatar(req, res, function(err) {
+            if (err) {
+                console.log('MULTER Error:', err);
+            }
+            user.name = req.body.name;
+            user.dateOfBirth = req.body.dateOfBirth;
+            user.phoneNumber = req.body.phoneNumber;
+            user.fullName = req.body.fullName;
+            user.gender = req.body.gender;
+            user.address = req.body.address;
+            if (req.file) {
+                user.avatar = User.avatarPath + '/' + req.file.filename;
+            }
+            user.save();
             return res.redirect('back');
-        }
-    }  
-
+        });
+    } catch (err) {
+        req.flash('error', err);
+        return res.redirect('back');
+    }
+}
 module.exports.signup = function(req, res){
     if(req.isAuthenticated()){
         req.flash('error','you are already logged in!');
@@ -70,7 +76,7 @@ module.exports.create = function(req, res){
             })
         }else{
             req.flash('error','user already exists! please login');
-            return res.redirect('back');
+            return res.redirect('/users/sign-in');
         }
 
     });

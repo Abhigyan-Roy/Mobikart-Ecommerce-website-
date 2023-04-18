@@ -7,8 +7,8 @@ router.get('/', homeController.home);
 router.use('/users',require('./users'));
 router.use('/cart',require('./products'));
 router.use('/comments',require('./comment'));
+router.use('/rate',require('./rate'));
+router.use('/order',require('./order'));
 // for any further routes, access from here
 // router.use('/routerName', require('./routerfile));
-
-
 module.exports = router;

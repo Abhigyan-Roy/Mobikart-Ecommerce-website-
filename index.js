@@ -37,10 +37,6 @@ const Secret_Key = 'sk_test_51LWOEuSGMtzrB9e9Dlhr7mafNeqhT3pUxLU4AOSOBlfZUTz5tWz
 const stripe = require('stripe')(Secret_Key);
 
 //used to setup the chat server to be used with socket.io
-const chatServer = require('http').Server(app);
-const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5000);
-console.log('chat server is listening on port 5000');
 
 app.use(express.urlencoded());
 
@@ -76,17 +72,14 @@ app.use(passport.setAuthenticatedUser);
 
 app.use(flash());
 app.use(customMware.setFlash);
-
 app.use('/', require('./routes'));
+
 const io = require('socket.io')(http);
-
-io.on('connection', (socket) => {
-    console.log('Connected...')
-    socket.on('message', (msg) => {
-        socket.broadcast.emit('message', msg)
-    })
-
-})
+const serverSide = require('./config/chat_sockets');
+serverSide(io);
+http.listen(5000, () => {
+    console.log('listening on chat server:5000');
+  });
 app.listen(port, function(err){
     if (err){
         console.log(`Error in running the server: ${err}`);

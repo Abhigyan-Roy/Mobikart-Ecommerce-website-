@@ -1,29 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+    background-color: black;
 }
 .contact{
-    background-color: black;
-    height: 80%;
+    height: auto;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2,2fr);
+    grid-template-columns: 6fr 3fr;
     align-items: center;
-    gap: 6rem;
-    padding: 40px;
+    gap: 1rem;
+    padding: 0px 4rem;
+}
+.contact-form {
+    margin-left: 12rem;
 }
 .contact-img img{
     max-width: 100%;
-    width: 720px;
     max-height: auto;
-    border-radius: 10px;
+    position: relative;
+    top: 130px;
 }
 .contact-form h1{
     color: aliceblue;
-    font-size: 5rem;
+    font-size: 8rem;
     margin-bottom: 15px;
 }
 .contact-form h1 span{
@@ -31,7 +30,7 @@
 }
 .contact-form p{
     color: aliceblue;
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     line-height: 10px;
     margin-bottom: 1.1rem;
 }
@@ -46,7 +45,7 @@
     outline: none;
     background: rgb(46, 46, 46);
     color: aliceblue;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     border-radius: 6px;
     margin-bottom: 0.7rem;
 }

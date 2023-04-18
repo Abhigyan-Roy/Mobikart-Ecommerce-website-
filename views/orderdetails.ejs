@@ -1,0 +1,106 @@
+<head>
+  <title>
+    <%=title%>
+  </title>
+  <link rel="stylesheet" href="/orderdetails.css">
+  <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <!-- FontAwesome 4.7.0 CDN -->
+</head>
+
+<body>
+  <div class="all">
+    <div class="container px-1 px-md-4 py-5 mx-auto">
+      <div class="card">
+        <div class="row d-flex justify-content-between px-3 top">
+          <div class="d-flex">
+            <h5>
+              ORDER
+              <span class="text-primary font-weight-bold">
+                <%=order._id%>
+              </span>
+            </h5>
+          </div>
+          <div class="d-flex flex-column text-sm-right">
+            <p class="mb-0">
+              Expected Arrival <span class="font-weight-bold">29 Aug 2023</span>
+            </p>
+            <p>
+              USPS <span class="font-weight-bold">2374723467163473124234</span>
+            </p>
+          </div>
+        </div>
+        <!-- Add class "active" to progress -->
+        <div class="row d-flex justify-content-center">
+          <div class="col-12">
+            <ul id="progressbar" class="text-center">
+              <li id="step1" class="step0"></li>
+              <li id="step2" class="step0"></li>
+              <li id="step3" class="step0"></li>
+              <li id="step4" class="step0"></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="row justify-content-between top">
+          <div class="row d-flex icon-content">
+            <img src="/pic/CheckList.png" alt="" class="icon" />
+            <div class="d-flex flex-column">
+              <p class="font-weight-bold">Order <br />Processed</p>
+            </div>
+          </div>
+          <div class="row d-flex icon-content">
+            <img src="/pic/Delivery.png" alt="" class="icon" />
+            <div class="d-flex flex-column">
+              <p class="font-weight-bold">Order <br />Shipped</p>
+            </div>
+          </div>
+          <div class="row d-flex icon-content">
+            <img src="/pic/Shipping.png" alt="" class="icon" />
+            <div class="d-flex flex-column">
+              <p class="font-weight-bold">Order <br />En Route</p>
+            </div>
+          </div>
+          <div class="row d-flex icon-content">
+            <img src="/pic/Home.png" alt="" class="icon" />
+            <div class="d-flex flex-column">
+              <p class="font-weight-bold">Order <br />Arrival</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function updateProgressBar(status) {
+      var step1 = document.getElementById("step1");
+      var step2 = document.getElementById("step2");
+      var step3 = document.getElementById("step3");
+      var step4 = document.getElementById("step4");
+      switch (status) {
+        case "processed":
+          step1.classList.add("active");
+          break;
+        case "shipped":
+          step1.classList.add("active");
+          step2.classList.add("active");
+          break;
+        case "enroute":
+          step1.classList.add("active");
+          step2.classList.add("active");
+          step3.classList.add("active");
+          break;
+        case "delivered":
+          step1.classList.add("active");
+          step2.classList.add("active");
+          step3.classList.add("active");
+          step4.classList.add("active");
+          break;
+        default:
+          break;
+      }
+    }
+    updateProgressBar("shipped");
+  </script>
+</body>

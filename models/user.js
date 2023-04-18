@@ -17,6 +17,28 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    fullName: {
+        type: String,
+        required: true,
+        default: "N/A"
+    },
+    gender: {
+        type: String,
+        enum: ["male", "female", "other"],
+        default: "male"
+    },
+    dateOfBirth: {
+        type: Date,
+        default: new Date("1970-01-01")
+    },
+    phoneNumber: {
+        type: String,
+        default: "0000000000"
+    },
+    address: {
+        type: String,
+        default: "N/A"
+    },
     avatar: {
         type: String
     },

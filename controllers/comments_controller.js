@@ -5,7 +5,6 @@ module.exports.createComment=function(req,res){
         if(product){
             Comment.create({
                 content:req.body.content,
-                star:req.body.star,
                 user:req.user._id
             },function(err,comment){
                 product.comments.push(comment);

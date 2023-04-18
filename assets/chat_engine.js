@@ -1,29 +1,18 @@
-const socket = io();
+let socket = new WebSocket('ws://152.58.139.66:5000','echo-protocol');
+socket.addEventListener("add", (ev) => {
+    socket.send(JSON.stringify({"type": "getplayerinfo", "token": token}));
+    });
 let textarea = document.querySelector('#textarea');
 let messageArea = document.querySelector('.chats');
 let sendButton=document.querySelector('.send-btn');
-textarea.addEventListener('keyup', (e) => {
-    if(e.key === 'Enter') {
-        sendMessage(e.target.value)
-    }
-})
-sendButton.addEventListener('click', () => {
-    sendMessage(textarea.value)
-})
+socket.addEventListener('open', (event) => {
+  console.log('Connected to server');
+});
 
-function sendMessage(message) {
-    let msg = {
-        message: message.trim()
-    }
-    // Append 
-    appendMessage(msg, 'outgoing')
-    textarea.value = ''
-    scrollToBottom()
-
-    // Send to server 
-    socket.emit('message', msg)
-
-}
+socket.addEventListener('message', (event) => {
+  console.log('Received message:', event.data);
+  appendMessage(event.data,'incoming');
+});
 
 function appendMessage(msg, type) {
     let mainDiv = document.createElement('div')
@@ -31,21 +20,28 @@ function appendMessage(msg, type) {
     mainDiv.classList.add(className, 'message')
 
     let markup = `
-        <p>${msg.message}</p>
+        <p>${msg}</p>
     `
     mainDiv.innerHTML = markup
     messageArea.appendChild(mainDiv)
 }
 
-// Recieve messages 
-socket.on('message', (msg) => {
-    appendMessage(msg, 'incoming')
-    scrollToBottom()
-})
-
-function scrollToBottom() {
-    messageArea.scrollTop = messageArea.scrollHeight
+function sendMessage() {
+  let message = textarea.value.trim();
+  if(message){
+    appendMessage(message,'outgoing');
+    socket.send(message);
+    textarea.value = '';
+  }
 }
 
+document.querySelector('.send-btn').addEventListener('click', (event) => {
+  event.preventDefault();
+  sendMessage();
+});
 
-
+document.querySelector('#textarea').addEventListener('keydown', (event) => {
+  if (event.keyCode === 13) {
+    sendMessage();
+  }
+});

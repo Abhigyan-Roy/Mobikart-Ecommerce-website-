@@ -7,32 +7,37 @@
     <title>MobiCart</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="slidein.css">
-    <link rel="stylesheet" href="chatbox.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/background.css">
+    <link rel="stylesheet" href="/slidein.css">
+    <link rel="stylesheet" href="/chatbox.css">
     <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <section class="wrapper">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </section>
     <nav>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="#">Brands</a>
-                <div class="sub-menu">
-                    <ul class="sub-menu">
-                        <li><a href="/cart/iphone">iphone</a></li>
-                        <li><a href="">samsung</a></li>
-                        <li><a href="">realme</a></li>
-                        <li><a href="/cart/oppo">oppo</a></li>
-                        <li><a href="/cart/vivo">vivo</a></li>
-                        <li><a href="">oneplus</a></li>
-                    </ul>
-                </div>
+            <li>
+                <a href="#">Brands <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown">
+                    <li><a href="/cart/samsung">samsung</a></li>
+                    <li><a href="/cart/oppo">oppo</a></li>
+                    <li><a href="/cart/realme">realme</a></li>
+                    <li><a href="/cart/vivo">vivo</a></li>
+                    <li><a href="/cart/iphone">iphone</a></li>
+                    <li><a href="/cart/oneplus">oneplus</a></li>
+                </ul>
             </li>
             <li><a href="#">Stores</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="/cart/aboutus">Contact Us</a></li>
             <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
         </ul>
         <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
@@ -65,7 +70,9 @@
                 <h1>MobiCart</h1>
             </div>
             <div class="line"></div>
-            <h3>Search, Compare, Buy...</h3>
+            <div class="text-typing">
+                <p>search, compare and buy.....</p>
+            </div>
             <div class="search-container">
                 <form>
                     <input type="text" name="search" placeholder="Search....">
@@ -95,11 +102,9 @@
                             <div class="two">
                                 <h2>S22 Ultra 5G</h2>
                                 <h4>256GB</h4>
-                                <h3><s>₹ 75,990</s>&nbsp;&nbsp;&nbsp;₹ 71,900</h3>
+                                <h3><s>₹ 1,31,099</s>&nbsp;&nbsp;&nbsp;₹ 1,09,999</h3>
                                 <h3></h3>
-                                <form action="/add-to-cart/add" method="post">
-                                    <button type="submit">add to cart</button>
-                                </form>
+                                <button type="submit"><a href="http://localhost:7500/cart/showdetails/63b55518a5b89c9962e99813">checkout here</a></button>
                             </div>
                         </div>
                     </div>
@@ -109,11 +114,9 @@
                             <div class="two">
                                 <h2>Xiomi 12 Pro</h2>
                                 <h4>256GB</h4>
-                                <h3><s>₹ 69,999</s>&nbsp;&nbsp;&nbsp;₹ 63,999</h3>
+                                <h3><s>₹ 67,499</s>&nbsp;&nbsp;&nbsp;₹ 59,999</h3>
                                 <h3></h3>
-                                <form action="/add-to-cart/add" method="post">
-                                    <button type="submit">add to cart</button>
-                                </form>
+                                <button type="submit"><a href="http://localhost:7500/cart/showdetails/63b55702a5b89c9962e99826">checkout here</a></button>
                             </div>
                         </div>
                     </div>
@@ -123,11 +126,9 @@
                             <div class="two">
                                 <h2>iPhone 13</h2>
                                 <h4>128GB</h4>
-                                <h3><s>₹ 79,900</s>&nbsp;&nbsp;&nbsp;₹ 67,990</h3>
+                                <h3><s>₹ 71,990</s>&nbsp;&nbsp;&nbsp;₹ 69,990</h3>
                                 <h3></h3>
-                                <form action="/add-to-cart/add" method="post">
-                                    <button type="submit">add to cart</button>
-                                </form>
+                                <button type="submit"><a href="http://localhost:7500/cart/showdetails/63b55260a5b89c9962e997f1">checkout here</a></button>
                             </div>
                         </div>
                     </div>
@@ -136,10 +137,6 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
             </div>
-        </div>
-
-        <div class="check">
-            <button data-aos="fade-right">See More...</button>
         </div>
         <div class="brands" data-aos="zoom-in-down" data-aos-duration="600">
             <h2>New Launches</h2>
@@ -189,9 +186,6 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-        <div class="check">
-            <button>See More...</button>
-        </div>
         <div class="brands">
             <h2>Shop By Brands</h2>
         </div>
@@ -217,6 +211,31 @@
             <div class="reasons"><img src="pic/r2.png" alt="" width="200" height="150"></div>
             <div class="reasons"><img src="pic/r3.png" alt="" width="200" height="160"></div>
         </div>
+        <div class="app-show">
+            <div class="app">
+                <img src="/pic/app_im1.png" alt="" width="460" height="400">
+            </div>
+            <div class="write">
+                <div class="fontt" data-aos="zoom-in-up" data-aos-duration="600">
+                    GET OUR MOBICART APP
+                </div>
+                <div class="fontt2">
+                    We will send you a link, open it on your phone to download the app...
+                </div>
+            </div>
+            <div class="check">
+                <input type="radio" name="" class="checkout">Email &nbsp &nbsp &nbsp
+                <input type="radio" name="" class="checkout" disabled>Phone
+            </div>
+            <div class="text">
+                <input type="email" id="texthold" placeholder="Email">
+                <button id="buttonhold"><a href="">Share App Link</a></button>
+            </div>
+            <div class="down">
+                <img src="/pic/google.webp" alt="" width="130" height="40">
+                <img src="/pic/appstore.webp" alt="" width="130" height="40">
+            </div>
+        </div>
     </main>
     <%if(locals.user){%>
         <div class="chat-box">
@@ -241,16 +260,15 @@
 
             <!-- input field section -->
             <div class="chat-input">
-                <input type="text" placeholder="Enter Message" id="textarea" />
-
-                <button class="send-btn">
-                    <img src="pic/send1.png" alt="send-btn">
+                <input type="text" placeholder="Enter Message" id="textarea" speech-recognition />
+                <button class="send-btn" type="submit">
+                  <img src="pic/send1.png" alt="send-btn">
                 </button>
                 <button class="voice-on">
-                    <img src="pic/mic.png" alt="voice-btn">
+                  <img src="pic/mic.png" alt="voice-btn">
                 </button>
                 <div class="instructions">Start</div>
-            </div>
+              </div>
         </div>
 
         <!-- button -->
@@ -332,7 +350,6 @@
                 });
             </script>
             <script src="first.js"></script>
-            <script src="voice.js"></script>
             <script src="https://cdn.socket.io/4.5.3/socket.io.min.js"
                 integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi"
                 crossorigin="anonymous"></script>

@@ -2,15 +2,9 @@
 html {
     font-size: 62.5%;
 }
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 .navigate{
     width: 100vw;
-    height: 30vh;
+    height: 20vh;
 }
 body{
     font-family: 'Cairo', sans-serif;
@@ -34,10 +28,18 @@ a {
 ul {
     list-style: none;
 }
-.sub-menu{                                                 /*menu inside a menu*/
+.dropdown li{
+    display: block;
+ }
+ .dropdown{
+    width: 100%;
+    position: absolute;
+    z-index: 999;
     display: none;
-    color: white;
-}
+ }
+ ul li:hover ul.dropdown{
+    display: block;
+ }
 .nav-links {                                              /*ul class for navigation bar*/
     display: flex;
     align-items: center;
@@ -47,22 +49,6 @@ ul {
    color: white;
    cursor: pointer;
 }
-.nav-links li:hover .sub-menu{
-    display: block;
-    position: absolute;
-    margin-top: 15px;
-    margin-left: -48px;
-}
-.nav-links li:hover .sub-menu ul{
-    display: block;
-    margin: 10px;
-}
-.nav-links li:hover .sub-menu ul li{
-    padding: 8px;
-    width: 150px;
-    font-size: 10px;
-}
-
 .nav-links li {
     margin: 0 4rem;
 }

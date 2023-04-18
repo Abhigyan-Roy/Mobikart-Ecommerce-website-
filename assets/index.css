@@ -2,6 +2,8 @@
 
 html {
     font-size: 62.5%;
+    height: auto;
+    background-color: rgb(16, 10, 26);
 }
 
 * {
@@ -10,23 +12,18 @@ html {
     box-sizing: border-box;
 }
 body{
-    background-color: black;
     overflow-x: hidden;
     font-family: 'Cairo', sans-serif;
 }
 header {
     width: 100vw;
     height: 100vh;
-    background-image: url(/b4.jpg);
-    background-attachment: fixed;
-    background-position: center center;
-    background-size: cover;
     display: flex;
     align-items: flex-end;
     justify-content: center;
 }
 
-nav {
+nav{
     display: flex;
     position: absolute;
     top: 0;
@@ -45,37 +42,17 @@ a {
 ul {
     list-style: none;
 }
-.sub-menu{                                                 /*menu inside a menu*/
-    display: none;
-    color: white;
-}
+
 .nav-links {                                              /*ul class for navigation bar*/
     display: flex;
     align-items: center;
-   
+}
+.nav-links li{                                              /*ul class for navigation bar*/
+   margin: 0rem 4rem;
 }
 .nav-links li i{
    color: white;
    cursor: pointer;
-}
-.nav-links li:hover .sub-menu{
-    display: block;
-    position: absolute;
-    margin-top: 15px;
-    margin-left: -48px;
-}
-.nav-links li:hover .sub-menu ul{
-    display: block;
-    margin: 10px;
-}
-.nav-links li:hover .sub-menu ul li{
-    padding: 8px;
-    width: 150px;
-    font-size: 10px;
-}
-
-.nav-links li {
-    margin: 0 4rem;
 }
 
 li button {
@@ -124,8 +101,7 @@ li button {
     font-size: 1.6rem;
     margin-top: -0.1rem;
     color: white;
-    font-family: 'Cairo', sans-serif;
-    text-align: center;
+    
 }
 .search-container form{
     width: 50rem;
@@ -167,12 +143,11 @@ li button {
     margin-left: -1rem;
 }
 
-
 main {
     width: 100vw;
     height: 280vh;
-    background-color: rgba(6,6,6,255);
 }
+
 .menu-btn{
     position: absolute;
     top: 2.2rem;
@@ -182,11 +157,13 @@ main {
     height: 3.8rem;
     display: none;
 }
+
 .cart1{
     position: absolute;
     top: 1.4rem;
     right: 7.5rem;
 }
+
 .cart2{
     position: absolute;
     top: 1.5rem;
@@ -311,7 +288,7 @@ footer{
     width: 100vw;
     height: auto;
     position: relative;
-    top: 80vh;
+    top: 135vh;
 }
 .foot1{
     background-color: rgb(78, 77, 76);
@@ -350,7 +327,7 @@ footer{
   align-items: center;
   justify-content: center;
 }
-  
+ 
   .swiper {
     width: 80vw;
     height: 50rem;
@@ -359,7 +336,7 @@ footer{
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: rgb(23, 22, 22);
+    background: rgb(16, 10, 26);
 
     /* Center slide text vertically */
     display: -webkit-box;
@@ -389,7 +366,120 @@ footer{
   .swiper-button-prev{
     color: aliceblue;
   }
-  
+ .dropdown li{
+    display: block;
+ }
+ .dropdown{
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+ }
+ ul li:hover ul.dropdown{
+    display: block;
+ }
+
+ .app-show{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.app{
+    position: absolute;
+    top: 9vh;
+    left: 11vw;
+}
+.fontt{
+    position: absolute;
+    top: 15vh;
+    font-family: 'Akshar', sans-serif;
+    font-size: 6rem;
+    left: 36vw;
+    color: aliceblue;
+}
+.fontt2{
+    position: absolute;
+    top: 30vh;
+    font-size: 1.8rem;
+    left: 36vw;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: aliceblue;
+}
+.check{
+    position: absolute;
+    top: 36vh;
+    font-size: 20px;
+    left: 36vw;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: aliceblue;
+}
+.checkout{
+    margin: 8px;
+}
+.text{
+    position: absolute;
+    top: 42vh;
+    font-size: 20px;
+    left: 36vw;
+}
+#texthold{
+    padding: 10px;
+    width: 25vw;
+    border-radius: 6px;
+    border: 0.3px solid gray;
+    font-size: 20px;
+}
+#buttonhold{
+    width: 10vw;
+    height: 6.2vh;
+    border-radius: 8px;
+    border: 0;
+    background-color: rgb(218, 94, 94);
+}
+#buttonhold a{
+    text-decoration: none;
+    color: azure;
+    font-size: 18px;
+}
+.down{
+    position: absolute;
+    top: 54vh;
+    font-size: 20px;
+    left: 36vw;
+}
+.down img{
+    margin-right: 30px;
+}
+.text-typing {
+    font-size:1.6rem;
+    color: aliceblue;
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+    margin-top: -1.2rem;
+  }
+  .text-typing p {
+    margin:0px;
+    white-space:nowrap;
+    overflow:hidden;
+    animation:typing 5s steps(22,end) infinite,
+              blink 1s infinite;
+  }
+  @keyframes typing {
+    0% { width:0% }
+    100% { width:100% }
+  }
+  @keyframes blink {
+    0%,100% {
+      border-right:2px solid transparent;
+    }
+    50% {
+      border-right:2px solid #ffffff;
+    }
+  }
 @media screen and (max-width:998px) {
     html{
         font-size: 55%;
@@ -481,3 +571,4 @@ footer{
         font-size: 44%;
     }
 }
+

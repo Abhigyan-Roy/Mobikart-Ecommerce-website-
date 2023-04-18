@@ -33,42 +33,47 @@
             <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
         </nav>
     </div>
-    
-    <div class="all">
-        <div class="container">
-            <h1>Your Cart Items:</h1>
+    <div class="wrapper">
+		<h1>Your Cart <i class="fa-solid fa-cart-shopping fa-xs"></i> :</h1>
+		<div class="project">
+			<div class="shop">
                 <% if(cart==null || cart.items.length==0){%>
-                    <h1>No items in your Cart</h1>
+                    <h1>No items in your Cart, yours Cart is Empty  <i class="fa-solid fa-face-sad-tear"></i> <i class="fa-solid fa-wind"></i></h1>
                 <%} else{%>
                     <% for(let i = 0; i < cart.items.length; i++){
                         let product = cart.items[i];  
                     %>
-                    <div class="items">
-                        <img src="<%=product.productId.imagePath%>" alt="" width="200" height="200">
-                        <div class="details">
-                            <h3><%=product.productId.desc%></h3>
-                            <small>In Stock</small>
-                            <h5>Eligible for free shipping</h5>
-                            <h6><b>size: <%=product.productId.ram%>GB | <%=product.productId.storage%>GB</b></h6>
-                            <h2>₹&nbsp;<%=product.productId.price%></h2>
-                            <h3 class="qty">QTY: <a href="/cart/decrease/<%=product.productId._id%>"><i class="fa-solid fa-circle-minus"></i></a> <%=product.qty%> <a href="/cart/increase/<%=product.productId._id%>"><i class="fa-solid fa-circle-plus"></i></a></h3>
-                            <form action="/cart/delete-cart/<%=product.productId._id%>" method="POST">
-                                <button type="submit" class="del"><i class="fa-solid fa-trash-can fa-lg"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <% } %>
+				<div class="box">
+					<img src="<%=product.productId.imagePath%>" alt="" width="200" height="200">
+					<div class="content">
+						<h3><%=product.productId.desc%></h3>
+                        <small>In Stock</small>
+                        <h5>Eligible for free shipping</h5>
+                        <h6><b>size: <%=product.productId.ram%>GB | <%=product.productId.storage%>GB</b></h6>
+						<h4>Price: <%=product.productId.price%></h4>
+						<p class="unit">Quantity: <a href="/cart/decrease/<%=product.productId._id%>"><i class="fa-solid fa-circle-minus"></i></a> <%=product.qty%> <a href="/cart/increase/<%=product.productId._id%>"><i class="fa-solid fa-circle-plus"></i></a></p>
+                        <form action="/cart/delete-cart/<%=product.productId._id%>" method="POST">
+                            <button type="submit" class="del"><p class="btn-area"><i aria-hidden="true" class="fa fa-trash"></i> <span class="btn2">Remove</span></p></button>
+                        </form>
+					</div>
+				</div>
                 <% } %>
-            </ul>
-        </div>
-        <% if(cart!=null){%>
-        <div class="total">
-            <h1>SubTotal: ₹<%=cart.totalPrice%></h1>
-            <div><input type="checkbox" name="" id=""> This order contains a Gift</div>
-            <a href="/cart/pay"><button>Proceed To Checkout</button></a>
-        </div>
-        <%}%>
-    </div>
-    
+                <% } %>
+			</div>
+			<div class="right-bar">
+                <% if(cart!=null){%>
+				<p><span>Subtotal</span> <span>₹ <%=cart.totalPrice%></span></p>
+				<hr>
+                <p><span>GST</span> <span>6%</span></p>
+				<hr>
+				<p><span>Shipping</span> <span>₹ 60</span></p>
+				<hr>
+				<p><span>Total</span><span>₹ <%=Math.round(cart.totalPrice*(1.06))+60%></span></p>
+                <form action="/order/checkout" method="get">
+                    <button><i class="fa fa-shopping-cart"></i>Checkout</button>
+                </form> 
+                <%}%>
+			</div>
+		</div>
 </body>
 

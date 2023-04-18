@@ -19,35 +19,15 @@ body{
     width: 100%;
     display: block;
 }
-.img-display{
-    overflow: hidden;
-}
-.img-showcase{
+.card{
     display: flex;
-    width: 100%;
-    transition: all 0.5s ease;
-}
-.img-showcase img{
-    min-width: 100%;
-}
-.img-select{
-    display: flex;
-}
-.img-item{
-    margin: 0.3rem;
-}
-.img-item:nth-child(1),
-.img-item:nth-child(2),
-.img-item:nth-child(3){
-    margin-right: 0;
-}
-.img-item:hover{
-    opacity: 0.8;
+  align-items: center;
 }
 .product-content{
     padding: 2rem 1rem;
     margin-top: 8rem;
 }
+
 .product-title{
     font-size: 1.8rem;
     text-transform: capitalize;
@@ -314,69 +294,11 @@ nav {
     cursor: pointer;
 }
 
-.rating-wrap{
-	width: 220px;
-    height: 150px;
-}
-
 .center{
 	width: 500px; 
 	margin: auto;
 }
 
-
-#rating-value{	
-	width: 110px;
-	margin: 40px auto 0;
-	padding: 10px 5px;
-	text-align: center;
-}
-
-/*styling star rating*/
-.rating{
-	border: none;
-	float: left;
-    color: #ffffff;
-}
-
-.rating > input{
-	display: none;
-}
-
-.rating > label:before{
-	content: '\f005';
-	font-family: FontAwesome;
-	margin: 5px;
-	font-size: 1.5rem;
-	display: inline-block;
-	cursor: pointer;
-}
-
-.rating > .half:before{
-	content: '\f089';
-	position: absolute;
-	cursor: pointer;
-}
-
-
-.rating > label{
-	color: #ddd;
-	float: right;
-	cursor: pointer;
-}
-
-.rating > input:checked ~ label,
-.rating:not(:checked) > label:hover, 
-.rating:not(:checked) > label:hover ~ label{
-	color: #ffff07;
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label,
-.rating > input:checked ~ label:hover ~ label{
-	color: #f0f006;
-}
 .name{
     width: 10vw;
     display: flex;
@@ -392,6 +314,26 @@ nav {
     margin-left: 20px;
     font-family: cursive;
 }
+
+.star-icon {
+    font-size: 20px;
+    color: #ddd;
+  }
+  .star-icon.filled {
+    color: #FFC107;
+    
+  }
+
+  .star-icon-inp {
+    font-size: 20px;
+    color: #ddd;
+    cursor: pointer;
+  }
+  .star-icon-inp.filled {
+    color: #FFC107;
+    
+  }
+  
 @media screen and (min-width: 992px){
     .card{
         display: grid;

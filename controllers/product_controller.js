@@ -1,7 +1,10 @@
 const Product=require('../models/product');
 const User = require('../models/user');
 const Publishable_Key = 'pk_test_51LWOEuSGMtzrB9e9nndOhmStMAuLvn5yRN2gzd02QDkkXWPi2T38t7mDTb9Y5ggw4DchTjGeorTzKqiPKV3OkNAL00lQgSQrba';
-
+const Order = require('../models/order');
+exports.aboutUs = (req, res) => {
+    res.render('about');
+}
 //it controls the add to cart function for a user
 exports.addToCart = (req, res, next) => {
     if(req.user){
@@ -29,7 +32,6 @@ module.exports.paymentgate = function(req, res){
 
 //to provide extra details about the payment session 
 module.exports.paymoney= function(req, res){
- 
     // Moreover you can take more details from user
     // like Address, Name, etc from form
     stripe.customers.create({
@@ -76,7 +78,7 @@ exports.showCart = (req, res, next) => {
         
 }
 
-//to show all the products entered till now(used in admin's page)
+//to show all the products entered till now
 module.exports.productShow= function(req, res){
     Product.find({}, function(err, products){
         if(err){
@@ -91,21 +93,35 @@ module.exports.productShow= function(req, res){
     })
 }
 
-module.exports.showDetails= function(req, res){
-    Product.findById(req.params.id)
-    .populate({
-        path:'comments',
-        populate:{
-            path:'user'
-        }
-    })
-    .exec(function(err,product){
-        return res.render('detailedpro',{
-            title: "Product Details",
-            product: product
-        });
-    });
-}
+module.exports.showDetails = async function(req, res) {
+    try {
+      const product = await Product.findById(req.params.id)
+        .populate({
+          path: 'comments',
+          populate: {
+            path: 'user'
+          }
+        })
+        .populate('ratings')
+        .exec();
+      const totalRatings = product.ratings.length;
+      let avgRating = 0;
+      if (totalRatings > 0) {
+        const sumRatings = product.ratings.reduce((sum, rating) => sum + rating.rating, 0);
+        avgRating = Math.round(sumRatings / totalRatings);
+      }
+  
+      res.render('detailedpro', {
+        title: "Product Details",
+        product: product,
+        avgRating: avgRating,
+        cart: req.user.cart
+      });
+    } catch (err) {
+      console.log(err);
+      res.redirect('/');
+    }
+  };
 //to increase quantity of a item in cart
 exports.increase = (req, res, next) => {
     req.user.increaseQty(req.params.id)
@@ -135,7 +151,31 @@ module.exports.adminpage=function(req, res){
 
     })
 }
-
+module.exports.adminOrder = function(req, res) {
+    Order.find().populate({
+        path: 'items.productId',
+        select: 'price desc imagePath',
+        model: Product
+    }).exec(function(err, orders) {
+        if (err) {
+            console.log('Error in retrieving orders!', err);
+            return res.redirect('back');
+        }
+        res.render('adminorders', { orders: orders, title: 'Admin Panel' });
+    });
+}
+module.exports.updOrder = function(req, res) {
+    const orderId = req.body.orderId;
+    const status = req.body.status;
+    Order.findByIdAndUpdate(orderId, { status: status }, function(err, order) {
+      if (err) {
+        console.log('Error in updating order status!', err);
+        return res.redirect('/cart/admin/orders');
+      }
+      req.flash('success','Updated!');
+      res.redirect('/cart/admin/orders');
+    });
+  }
 //to create or add a new product to database 
 module.exports.create= function(req, res){
     Product.create({
