@@ -1,15 +1,15 @@
-const express=require('express');
+const express = require('express');
 require("dotenv").config();
 const cookieParser = require('cookie-parser');
 const app = express();
-const env=require('./config/environment');
-const port = process.env.PORT || 7500 ;
-const http = require('http').createServer(app);
-const path=require('path');
+const env = require('./config/environment');
+const port = process.env.PORT || 7500;
+const httpServer = require('http').createServer(app);
+const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const logger = require('morgan');
 //used to connect the database
-const db = require('./config/mongoose');
+// const db = require('./config/mongoose');
 
 //using say.js
 const say = require('say');
@@ -18,18 +18,18 @@ const say = require('say');
 const session = require('express-session');
 
 //used to include mongo-store for longer session
-const MongoDbStore = require('connect-mongo');
+// const MongoDbStore = require('connect-mongo');
 
 //used to include passport local authentication
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 
 //used for flash messages
-const flash=require('connect-flash');
-const customMware=require('./config/middleware');
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 //used for google authentication(google-oauth)
-const passportGoogle=require('./config/passport-oauth-google');
+const passportGoogle = require('./config/passport-oauth-google');
 
 //used for stripe payment gateway
 const Publishable_Key = 'pk_test_51LWOEuSGMtzrB9e9nndOhmStMAuLvn5yRN2gzd02QDkkXWPi2T38t7mDTb9Y5ggw4DchTjGeorTzKqiPKV3OkNAL00lQgSQrba';
@@ -52,16 +52,16 @@ app.use(logger(env.morgan.mode, env.morgan.options));
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
-app.use('/uploads',express.static(__dirname+'/uploads'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(
     session({
         secret: env.session_cookie,
         resave: false,
         saveUninitialized: false,
-        store: MongoDbStore.create({
-            mongoUrl: 'mongodb://localhost/MobiKart_db'
-        })
+        // store: MongoDbStore.create({
+        //     mongoUrl: 'mongodb://localhost/MobiKart_db'
+        // })
     })
 );
 app.use(passport.initialize());
@@ -74,14 +74,23 @@ app.use(flash());
 app.use(customMware.setFlash);
 app.use('/', require('./routes'));
 
-const io = require('socket.io')(http);
+const { Server } = require('socket.io');
 const serverSide = require('./config/chat_sockets');
+const io = new Server(httpServer, {
+    cors: {
+        origin: "http://localhost:7500"
+    }
+})
 serverSide(io);
-http.listen(5000, () => {
+
+
+
+httpServer.listen(5000, () => {
     console.log('listening on chat server:5000');
-  });
-app.listen(port, function(err){
-    if (err){
+});
+
+app.listen(port, function (err) {
+    if (err) {
         console.log(`Error in running the server: ${err}`);
     }
     console.log(`Server is running on port: ${port}`);
