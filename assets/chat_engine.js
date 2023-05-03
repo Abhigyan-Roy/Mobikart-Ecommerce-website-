@@ -1,4 +1,4 @@
-let socket = new WebSocket('ws://152.58.139.66:5000','echo-protocol');
+let socket = new WebSocket('ws://127.0.0.1:5000','echo-protocol');
 socket.addEventListener("add", (ev) => {
     socket.send(JSON.stringify({"type": "getplayerinfo", "token": token}));
     });

@@ -12,6 +12,7 @@
     <form action="/cart/create" method="post" class="addpro">
         <input type="text" name="imagePath" placeholder="Input image Path.." required>
         <input type="text" name="bigImg" placeholder="Bigger image Path.." required>
+        <input type="text" name="additionalImagePaths" placeholder="Input image paths separated by commas.." required>
         <input type="text" name="frontcam" placeholder="Frontcam.." required>
         <input type="text" name="rearcam" placeholder="Rearcam.." required>
         <input type="text" name="Android" placeholder="Android.." required>
@@ -40,14 +41,37 @@
                     <h2>
                         <%=i.brand%>
                     </h2>
-                    <h4>128GB</h4>
+                    <h4><%=i.storage%>GB</h4>
                     <h3><s>
                             <%=i.mrp%>
                         </s>&nbsp;&nbsp;&nbsp;<%=i.price%>
                     </h3>
-                    <a href="/cart/delete/<%=i._id%>">Delete</a>
+                    <a href="/cart/edit/<%=i._id%>"><button>Edit</button></a><br>
+                    <form action="/cart/delete/<%=i._id%>" method="get">
+                        <button type="submit" class="delete-btn" data-product-id="<%= i._id %>">Delete</button>
+                    </form>
                 </div>
             </div>
             <% } %>
     </div>
+    <script>
+        const deleteBtns = document.querySelectorAll('.delete-btn');
+        deleteBtns.forEach((deleteBtn) => {
+            deleteBtn.addEventListener('click', (event) => {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+
+                // Get the product ID from the data attribute of the delete button
+                const productId = deleteBtn.dataset.productId;
+
+                // Show the confirmation prompt with the product ID in the message
+                const confirmDelete = confirm(`Are you sure you want to delete product ${productId}?`);
+
+                // If the user confirms the delete, submit the form
+                if (confirmDelete) {
+                    deleteBtn.parentNode.submit();
+                }
+            });
+        });
+    </script>
 </body>

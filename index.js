@@ -3,7 +3,8 @@ require("dotenv").config();
 const cookieParser = require('cookie-parser');
 const app = express();
 const env=require('./config/environment');
-const port = process.env.PORT || 7500 ;
+const port =  6969 ;
+console.log(port)
 const http = require('http').createServer(app);
 const path=require('path');
 const expressLayouts = require('express-ejs-layouts');
@@ -80,6 +81,7 @@ serverSide(io);
 http.listen(5000, () => {
     console.log('listening on chat server:5000');
   });
+
 app.listen(port, function(err){
     if (err){
         console.log(`Error in running the server: ${err}`);

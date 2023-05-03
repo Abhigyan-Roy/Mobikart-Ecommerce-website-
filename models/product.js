@@ -77,7 +77,15 @@ const productSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Comment'
         }
-    ]
+    ],
+    additionalImagePaths: [{
+        type: String,
+        required: true
+    }],
+    binkies:{
+        type: String,
+        required: true
+    }
 });
 const Product = mongoose.model('Product', productSchema);
 

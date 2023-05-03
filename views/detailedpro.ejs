@@ -1,9 +1,26 @@
 <title>
-    <%=title%>
+  <%=title%>
 </title>
 <link rel="stylesheet" href="/details.css">
 <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src='https://embed.binkies3d.com/integrations/MNwaX7Qx/yiy0yc1z/script.js'></script>
+<link rel="stylesheet"  href="https://fdn.gsmarena.com/vv/assets12/css/binkies-3d.css?v=11" />
+
+    <script>
+        function swatchClicked(target)
+        {
+            var selected = document.querySelector(".binkies-color-swatch.selected");
+            if (selected !== null) selected.classList.remove("selected");
+            target.classList.add("selected");
+        }
+        function load3D()
+        {
+            var selected = document.querySelector("#binkies-container-waiting-on-click");
+            if(selected !== null) selected.id = "binkies-container";
+        }
+    </script>
+
 <body>
   <div class="navigate">
     <nav>
@@ -28,33 +45,37 @@
       <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
       <%if(locals.user){%>
         <% if(cart==null || cart.items.length==0){%>
-            <div class="countitems">0</div>
-        <%} else{%>
-           <%  let totalQty=0;
-               for(let i = 0; i < cart.items.length; i++){
-               let product = cart.items[i];
-               totalQty+=product.qty;  
-           %>
-           <%}%>
-           <div class="countitems"><%=totalQty%></div>
-         <%}%>
-       <%}%>
-      <% if(locals.user){%>
-        <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%>
-          </button></a>
-        <%} else{%>
-          <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
-          <%}%>
-            <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
+          <div class="countitems">0</div>
+          <%} else{%>
+            <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i];
+              totalQty+=product.qty; %>
+              <%}%>
+                <div class="countitems">
+                  <%=totalQty%>
+                </div>
+                <%}%>
+                  <%}%>
+                    <% if(locals.user){%>
+                      <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+                          <%=user.name%>
+                        </button></a>
+                      <%} else{%>
+                        <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
+                        <%}%>
+                          <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
     </nav>
   </div>
   <div class="card-wrapper">
     <div class="card">
       <!-- card left -->
       <div class="product-imgs">
-        <div class="img-display">
-          <div class="img-showcase">
-            <img src="<%=product.bigImg%>" alt="shoe image">
+        <div class="threesixty">
+          <div id="binkies-container">
+            <div id="binkies-content"></div>
+            <div id="binkies-color-switcher">
+              <div class="binkies-color-swatch selected" data-binkies-content-id="<%=product.binkies%>"
+                onclick="swatchClicked(this)"><%=product.color%></div>
+            </div>
           </div>
         </div>
         <div class="button-container">
@@ -63,7 +84,7 @@
               <button type="submit" class="btn1 btn">
                 Add to Cart <i class="fas fa-shopping-cart"></i>
               </button>
-          </form>
+            </form>
           </div>
           <div class="purchase-info">
             <button type="button" class="btn2 btn">
@@ -72,8 +93,6 @@
           </div>
         </div>
       </div>
-
-
       <!-- card right -->
       <div class="product-content">
         <h2 class="product-title">
@@ -81,16 +100,18 @@
         </h2>
         <a href="#" class="product-link">visit <%=product.brand%> store</a>
         <div class="product-rating">
-          <% for (let i = 0; i < 5; i++) { %>
+          <% for (let i=0; i < 5; i++) { %>
             <% if (i < Math.floor(avgRating)) { %>
               <i class="star-icon filled fas fa-star"></i>
-            <% } else if (i < avgRating) { %>
-              <i class="star-icon filled fas fa-star-half"></i>
-            <% } else { %>
-              <i class="star-icon fas fa-star"></i>
-            <% } %>
-          <% } %>
-          <span><%=avgRating%>(<%=product.ratings.length%>)</span>
+              <% } else if (i < avgRating) { %>
+                <i class="star-icon filled fas fa-star-half"></i>
+                <% } else { %>
+                  <i class="star-icon fas fa-star"></i>
+                  <% } %>
+                    <% } %>
+                      <span>
+                        <%=avgRating%>(<%=product.ratings.length%>)
+                      </span>
         </div>
         <form oninput="ans.value=parseInt(n1.value)+parseInt(n2.value)">
           <input type="hidden" name="n1" value="<%=product.mrp%>">
@@ -99,8 +120,8 @@
         </form>
         <div class="product-price">
           <p class="last-price">Old Price: <span>₹ <%=product.mrp%></span></p>
-          <% const percentageOff = ((product.mrp - product.price) / product.mrp * 100).toFixed(0); %>
-          <p class="new-price">New Price: <span>₹ <%=product.price%> (-<%=percentageOff%>%)</span></p>
+          <% const percentageOff=((product.mrp - product.price) / product.mrp * 100).toFixed(0); %>
+            <p class="new-price">New Price: <span>₹ <%=product.price%> (-<%=percentageOff%>%)</span></p>
         </div>
 
         <div class="product-detail">
@@ -173,26 +194,30 @@
             <input type="hidden" name="rating" id="rating-give" value="0">
             <input type="submit" value="Add Ratings" id="btnn">
           </form>
-        <form action="/comments/create/<%=product._id%>" method="post">
-          <h3>Give Your Comment:</h3>
-          <input type="text" name="content" id="textarea">
-          <input type="submit" value="Add comment" id="btnn">
-        </form>
-        <br><br><br>
-      <%}%>
-    </div>
-    <div class="comments-list">
-      <%for(comment of product.comments){%>
-        <div class="name">
-          <i class="fa-solid fa-user"></i>
-          <h4><%=comment.user.name%></h4>
-          <a href="/comments/destroy/<%=comment.id%>"><i class="fa-solid fa-delete-left fa-lg"></i></a>
+          <form action="/comments/create/<%=product._id%>" method="post">
+            <h3>Give Your Comment:</h3>
+            <input type="text" name="content" id="textarea">
+            <input type="submit" value="Add comment" id="btnn">
+          </form>
+          <br><br><br>
+          <%}%>
         </div>
-        <div class="comment">
-          <h4><%=comment.content%></h4>
+        <div class="comments-list">
+          <%for(comment of product.comments){%>
+            <div class="name">
+              <i class="fa-solid fa-user"></i>
+              <h4>
+                <%=comment.user.name%>
+              </h4>
+              <a href="/comments/destroy/<%=comment.id%>"><i class="fa-solid fa-delete-left fa-lg"></i></a>
+            </div>
+            <div class="comment">
+              <h4>
+                <%=comment.content%>
+              </h4>
+            </div>
+            <%}%>
         </div>
-      <%}%>
     </div>
-  </div>
 </body>
 <script src="/show_star.js"></script>
