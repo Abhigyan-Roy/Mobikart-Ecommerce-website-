@@ -1,0 +1,79 @@
+<head>
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/cart.css">
+    <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="navigate">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Brands</a>
+                    <div class="sub-menu">
+                        <ul class="sub-menu">
+                            <li><a href="/cart/iphone">iphone</a></li>
+                            <li><a href="">samsung</a></li>
+                            <li><a href="">realme</a></li>
+                            <li><a href="/cart/oppo">oppo</a></li>
+                            <li><a href="/cart/vivo">vivo</a></li>
+                            <li><a href="">oneplus</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Stores</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
+            </ul>
+            <% if(locals.user){%>
+                <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></button></a>
+            <%} else{%>
+                <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
+            <%}%>
+            <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
+        </nav>
+    </div>
+    <div class="wrapper">
+		<h1>Your Cart <i class="fa-solid fa-cart-shopping fa-xs"></i> :</h1>
+		<div class="project">
+			<div class="shop">
+                <% if(cart==null || cart.items.length==0){%>
+                    <h1>No items in your Cart, yours Cart is Empty  <i class="fa-solid fa-face-sad-tear"></i> <i class="fa-solid fa-wind"></i></h1>
+                <%} else{%>
+                    <% for(let i = 0; i < cart.items.length; i++){
+                        let product = cart.items[i];  
+                    %>
+				<div class="box">
+					<img src="<%=product.productId.imagePath%>" alt="" width="200" height="200">
+					<div class="content">
+						<h3><%=product.productId.desc%></h3>
+                        <small>In Stock</small>
+                        <h5>Eligible for free shipping</h5>
+                        <h6><b>size: <%=product.productId.ram%>GB | <%=product.productId.storage%>GB</b></h6>
+						<h4>Price: <%=product.productId.price%></h4>
+						<p class="unit">Quantity: <a href="/cart/decrease/<%=product.productId._id%>"><i class="fa-solid fa-circle-minus"></i></a> <%=product.qty%> <a href="/cart/increase/<%=product.productId._id%>"><i class="fa-solid fa-circle-plus"></i></a></p>
+                        <form action="/cart/delete-cart/<%=product.productId._id%>" method="POST">
+                            <button type="submit" class="del"><p class="btn-area"><i aria-hidden="true" class="fa fa-trash"></i> <span class="btn2">Remove</span></p></button>
+                        </form>
+					</div>
+				</div>
+                <% } %>
+                <% } %>
+			</div>
+			<div class="right-bar">
+                <% if(cart!=null){%>
+				<p><span>Subtotal</span> <span>₹ <%=cart.totalPrice%></span></p>
+				<hr>
+                <p><span>GST</span> <span>6%</span></p>
+				<hr>
+				<p><span>Shipping</span> <span>₹ 60</span></p>
+				<hr>
+				<p><span>Total</span><span>₹ <%=Math.round(cart.totalPrice*(1.06))+60%></span></p>
+                <form action="/order/checkout" method="get">
+                    <button><i class="fa fa-shopping-cart"></i>Checkout</button>
+                </form> 
+                <%}%>
+			</div>
+		</div>
+</body>
+

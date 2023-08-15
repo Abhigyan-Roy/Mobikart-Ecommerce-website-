@@ -1,0 +1,222 @@
+<title>
+  <%=title%>
+</title>
+<link rel="stylesheet" href="/details.css">
+<script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src='https://embed.binkies3d.com/integrations/MNwaX7Qx/yiy0yc1z/script.js'></script>
+<link rel="stylesheet" href="https://fdn.gsmarena.com/vv/assets12/css/binkies-3d.css?v=11" />
+
+<script>
+  function swatchClicked(target) {
+    var selected = document.querySelector(".binkies-color-swatch.selected");
+    if (selected !== null) selected.classList.remove("selected");
+    target.classList.add("selected");
+  }
+  function load3D() {
+    var selected = document.querySelector("#binkies-container-waiting-on-click");
+    if (selected !== null) selected.id = "binkies-container";
+  }
+</script>
+
+<body>
+  <div class="navigate">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Brands</a>
+          <div class="sub-menu">
+            <ul class="sub-menu">
+              <li><a href="/cart/iphone">iphone</a></li>
+              <li><a href="">samsung</a></li>
+              <li><a href="">realme</a></li>
+              <li><a href="/cart/oppo">oppo</a></li>
+              <li><a href="/cart/vivo">vivo</a></li>
+              <li><a href="">oneplus</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="/cart/compare">Compare</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
+      </ul>
+      <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
+      <%if(locals.user){%>
+        <% if(cart==null || cart.items.length==0){%>
+          <div class="countitems">0</div>
+          <%} else{%>
+            <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i];
+              totalQty+=product.qty; %>
+              <%}%>
+                <div class="countitems">
+                  <%=totalQty%>
+                </div>
+                <%}%>
+                  <%}%>
+                    <% if(locals.user){%>
+                      <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+                          <%=user.name%>
+                        </button></a>
+                      <%} else{%>
+                        <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
+                        <%}%>
+                          <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
+    </nav>
+  </div>
+
+  <div class="card-wrapper">
+    <div class="card">
+      <!-- card left -->
+      <div class="product-imgs">
+        <div class="threesixty">
+          <div id="binkies-container">
+            <div id="binkies-content"></div>
+            <div id="binkies-color-switcher">
+              <div class="binkies-color-swatch selected" data-binkies-content-id="<%=product.binkies%>"
+                onclick="swatchClicked(this)"><%=product.color%></div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container">
+          <div class="purchase-info">
+            <form action="/cart/add-to-cart/<%=product._id%>" method="post">
+              <button type="submit" class="btn1 btn">
+                Add to Cart <i class="fas fa-shopping-cart"></i>
+              </button>
+            </form>
+          </div>
+          <div class="purchase-info">
+            <button type="button" class="btn2 btn">
+              Move to Wishlist <i class="fa-solid fa-list-check"></i></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- card right -->
+      <div class="product-content">
+        <h2 class="product-title">
+          <%=product.desc%>
+        </h2>
+        <a href="#" class="product-link">visit <%=product.brand%> store</a>
+        <div class="product-rating">
+          <% for (let i=0; i < 5; i++) { %>
+            <% if (i < Math.floor(avgRating)) { %>
+              <i class="star-icon filled fas fa-star"></i>
+              <% } else if (i < avgRating) { %>
+                <i class="star-icon filled fas fa-star-half"></i>
+                <% } else { %>
+                  <i class="star-icon fas fa-star"></i>
+                  <% } %>
+                    <% } %>
+                      <span>
+                        <%=avgRating%>(<%=product.ratings.length%>)
+                      </span>
+        </div>
+        <form oninput="ans.value=parseInt(n1.value)+parseInt(n2.value)">
+          <input type="hidden" name="n1" value="<%=product.mrp%>">
+          <input type="hidden" name="n2" value="<%=product.price%>">
+          <output name="ans" id="#outputd"></output>
+        </form>
+        <div class="product-price">
+          <p class="last-price">Old Price: <span>₹ <%=product.mrp%></span></p>
+          <% const percentageOff=((product.mrp - product.price) / product.mrp * 100).toFixed(0); %>
+            <p class="new-price">New Price: <span>₹ <%=product.price%> (-<%=percentageOff%>%)</span></p>
+        </div>
+
+        <div class="product-detail">
+          <h2>about this item: </h2>
+          <p>
+            <%=product.longdesc%>
+          </p>
+          <h2>specifications: </h2>
+          <ul>
+            <li>Color: <span>
+                <%=product.color%>
+              </span></li>
+            <li>Front Camera: <span>
+                <%=product.frontcam%>
+              </span></li>
+            <li>Rear Camera: <span>
+                <%=product.rearcam%>
+              </span></li>
+            <li>Operating System: <span>
+                <%=product.Android%>
+              </span></li>
+            <li>Processor: <span>
+                <%=product.processor%>
+              </span></li>
+            <li>Battery: <span>
+                <%=product.battery%> mah
+              </span></li>
+            <li>Memory: <span>
+                <%=product.ram%> GB
+              </span></li>
+            <li>Internal Storage: <span>
+                <%=product.storage%> GB
+              </span></li>
+            <li>Seller: <span>
+                <%=product.seller%>
+              </span></li>
+          </ul>
+        </div>
+
+        <div class="social-links">
+          <p>Share At: </p>
+          <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#">
+            <i class="fab fa-pinterest"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ratings">
+    <h1>User Ratings and Review:
+    </h1>
+    <div class="product-comments">
+      <%if(locals.user){%>
+        <div class="rating-wrap">
+          <h3>Give Your Star Rating:</h3>
+          <div class="rating-stars" id="rating-stars">
+            <i class="star-icon-inp fas fa-star" data-value="1"></i>
+            <i class="star-icon-inp fas fa-star" data-value="2"></i>
+            <i class="star-icon-inp fas fa-star" data-value="3"></i>
+            <i class="star-icon-inp fas fa-star" data-value="4"></i>
+            <i class="star-icon-inp fas fa-star" data-value="5"></i>
+          </div>
+          <form action="/rate/create/<%=product._id%>" method="post">
+            <input type="hidden" name="rating" id="rating-give" value="0">
+            <input type="submit" value="Add Ratings" id="btnn">
+          </form>
+          <form action="/comments/create/<%=product._id%>" method="post">
+            <h3>Give Your Comment:</h3>
+            <input type="text" name="content" id="textarea">
+            <input type="submit" value="Add comment" id="btnn">
+          </form>
+          <br><br><br>
+          <%}%>
+        </div>
+        <div class="comments-list">
+          <%for(comment of product.comments){%>
+            <div class="name">
+              <i class="fa-solid fa-user"></i>
+              <h4>
+                <%=comment.user.name%>
+              </h4>
+              <a href="/comments/destroy/<%=comment.id%>"><i class="fa-solid fa-delete-left fa-lg"></i></a>
+            </div>
+            <div class="comment">
+              <h4>
+                <%=comment.content%>
+              </h4>
+            </div>
+            <%}%>
+        </div>
+    </div>
+</body>
+<script src="/show_star.js"></script>

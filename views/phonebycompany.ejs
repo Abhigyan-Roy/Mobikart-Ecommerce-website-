@@ -1,0 +1,120 @@
+<head>
+    <title>
+        <%=title%>
+    </title>
+
+    <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/productpage.css">
+    <link rel="stylesheet" href="slidein.css">
+</head>
+
+<body>
+    <div class="navigate">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li>
+                    <a href="#">Brands <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="/cart/samsung">samsung</a></li>
+                        <li><a href="/cart/oppo">oppo</a></li>
+                        <li><a href="/cart/realme">realme</a></li>
+                        <li><a href="/cart/vivo">vivo</a></li>
+                        <li><a href="/cart/iphone">iphone</a></li>
+                        <li><a href="/cart/oneplus">oneplus</a></li>
+                    </ul>
+                </li>
+                <li><a href="/cart/compare">Compare</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
+            </ul>
+            <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
+            <%if(locals.user){%>
+                <% if(cart==null || cart.items.length==0){%>
+                    <div class="countitems">0</div>
+                    <%} else{%>
+                        <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i];
+                            totalQty+=product.qty; %>
+                            <%}%>
+                                <div class="countitems">
+                                    <%=totalQty%>
+                                </div>
+                                <%}%>
+                                    <%}%>
+                                        <% if(locals.user){%>
+                                            <a href="/users/profile"><button class="cart2"><i
+                                                        class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%>
+                                                        </button></a>
+                                            <%} else{%>
+                                                <a href="/users/sign-in"><button class="cart2"><i
+                                                            class="fa-solid fa-user"></i></button></a>
+                                                <%}%>
+                                                    <img src="/pic/menu.png" alt="" class="menu-btn" width="40"
+                                                        height="50">
+        </nav>
+    </div>
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <% for(let i of products){ %>
+                    <div class="row p-2 bg-white border rounded m-4">
+                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image"
+                                src="<%=i.imagePath%>"></div>
+                        <div class="col-md-6 mt-1">
+                            <h5>
+                                <%=i.desc%>
+                            </h5>
+                            <div class="d-flex flex-row">
+                                <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                        class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
+                            </div>
+                            <div class="mt-1 mb-1 spec-1"><span>
+                                    <%=i.ram%>GB
+                                </span><span class="dot"></span><span>
+                                    <%=i.storage%>GB
+                                </span><span class="dot"></span><span>Best finish<br></span></div>
+                            <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For
+                                    men</span><span class="dot"></span><span>Casual<br></span></div>
+                            <p class="text-justify text-truncate para mb-0">There are many variations of passages of
+                                Lorem Ipsum available, but the majority have suffered alteration in some form, by
+                                injected humour, or randomised words which don't look even slightly believable.<br><br>
+                            </p>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="mr-1">₹<%=i.mrp%>
+                                </h4><span class="strike-text">₹<%=i.mrp%></span>
+                            </div>
+                            <h6 class="text-success">Free shipping</h6>
+                            <div class="d-flex flex-column mt-4"><a href="/cart/showdetails/<%=i._id%>"><button
+                                        class="btn btn-primary btn-sm mt-2" type="button">Details</button></a>
+                                <form action="/cart/add-to-cart/<%=i._id%>" method="post"><button type="submit"
+                                        class="btn btn-outline-primary btn-sm mt-2 w-8" type="button">Add to
+                                        Cart</button></form>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"
+        integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/chat_engine.js"></script>
+    <% if (locals.user){ %>
+        <script>
+            new ChatEngine('chat-box', '<%= locals.user.email %>')
+        </script>
+        <% } %>
+            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            <script>
+                AOS.init({
+                    duration: 1000
+                });
+            </script>
+            <script src="first.js"></script>
+</body>

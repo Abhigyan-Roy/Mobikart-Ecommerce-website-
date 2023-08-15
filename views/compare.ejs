@@ -1,0 +1,166 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/compare.css">
+    <link rel="stylesheet" href="/nav.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <div class="navigate">
+        <%-include('_nav');%>
+    </div>
+    <h1 class="display-5 my-5 text-center">Compare Your Choices</h1>
+    <div class="container">
+        <div class="col-md-13 mx-auto">
+            <table class="table">
+                <tr class="bg-dark">
+                    <form action="/cart/compare" method="post">
+                        <th>Select Product <button type="submit">Compare</button></th>
+                        <th width="250px">
+                          <label for="product1">Select Product 1:</label>
+                          <select id="product1" name="product1">
+                            <option value="">--Please Select--</option>
+                            <% products.forEach(function(product) { %>
+                              <% if (product.id === 1) { %>
+                                <option value="<%= product.id %>" selected>
+                                  <%= product.desc %>
+                                </option>
+                              <% } else { %>
+                                <option value="<%= product.id %>">
+                                  <%= product.desc %>
+                                </option>
+                              <% } %>
+                            <% }); %>
+                          </select>
+                        </th>
+                        <th width="250px">
+                          <label for="product2">Select Product 2:</label>
+                          <select id="product2" name="product2">
+                            <option value="">--Please Select--</option>
+                            <% products.forEach(function(product) { %>
+                              <% if (product.id === 1) { %>
+                                <option value="<%= product.id %>" selected>
+                                  <%= product.desc %>
+                                </option>
+                              <% } else { %>
+                                <option value="<%= product.id %>">
+                                  <%= product.desc %>
+                                </option>
+                              <% } %>
+                            <% }); %>
+                          </select>  
+                        </th>
+                      </form>
+                      
+                </tr>
+                <% if(product1 && product2) { %>
+                    <tr>
+                        <th>Product Image</th>
+                        <td>
+                            <img src="<%= products[product1Index].imagePath %>" id="img1" alt="">
+                        </td>
+                        <td>
+                            <img src="<%= products[product2Index].imagePath %>" id="img2" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td id="desc1">
+                            <%= products[product1Index].desc %>
+                        </td>
+                        <td id="desc2">
+                            <%= products[product2Index].desc %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td id="price1">
+                            <%= products[product1Index].price %>
+                        </td>
+                        <td id="price2">
+                            <%= products[product2Index].price %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Brand</th>
+                        <td id="brand1">
+                            <%= products[product1Index].brand %>
+                        </td>
+                        <td id="brand2">
+                            <%= products[product2Index].brand %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Front Camera</th>
+                        <td id="brand1">
+                            <%= products[product1Index].frontcam %>
+                        </td>
+                        <td id="brand2">
+                            <%= products[product2Index].frontcam %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Rear Camera</th>
+                        <td id="brand1">
+                            <%= products[product1Index].rearcam %>
+                        </td>
+                        <td id="brand2">
+                            <%= products[product2Index].rearcam %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Battery</th>
+                        <td id="brand1">
+                            <%= products[product1Index].battery %> mah
+                        </td>
+                        <td id="brand2">
+                            <%= products[product2Index].battery %> mah
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Processor</th>
+                        <td id="brand1">
+                            <%= products[product1Index].processor %>
+                        </td>
+                        <td id="brand2">
+                            <%= products[product2Index].processor %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>RAM</th>
+                        <td id="brand1">
+                            <%= products[product1Index].ram %> GB
+                        </td>
+                        <td id="brand2">
+                            <%= products[product2Index].ram %> GB
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>ROM</th>
+                        <td id="brand1">
+                            <%= products[product1Index].storage %> GB
+                        </td>
+                        <td id="brand2">
+                            <%= products[product2Index].storage %> GB
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Android</th>
+                        <td id="brand1">
+                            <%= products[product1Index].Android %> 
+                        </td>
+                        <td id="brand2">
+                            <%= products[product2Index].Android %> 
+                        </td>
+                    </tr>
+                    <% } %>
+            </table>
+        </div>
+    </div>
+</body>

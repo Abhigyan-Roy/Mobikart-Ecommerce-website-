@@ -1,0 +1,39 @@
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+
+<body>
+    <h1>Update Product</h1>
+    <form action="/cart/admin/updateProduct/<%= product._id %>" method="POST" class="addpro">
+        <input type="text" name="imagePath" value="<%= product.imagePath %>" placeholder="Input image Path.." required>
+        <input type="text" name="bigImg" value="<%= product.bigImg %>" placeholder="Bigger image Path.." required>
+        <input type="text" name="frontcam" value="<%= product.frontcam %>" placeholder="Frontcam.." required>
+        <input type="text" name="rearcam" value="<%= product.rearcam %>" placeholder="Rearcam.." required>
+        <input type="text" name="Android" value="<%= product.Android %>" placeholder="Android.." required>
+        <input type="text" name="seller" value="<%= product.seller %>" placeholder="Seller.." required>
+        <input type="number" name="battery" value="<%= product.battery %>" placeholder="Battery.." required>
+        <input type="text" name="processor" value="<%= product.processor %>" placeholder="Processor.." required>
+        <input type="text" name="brand" value="<%= product.brand %>" placeholder="Product company.." required>
+        <input type="text" name="color" value="<%= product.color %>" placeholder="Product color.." required>
+        <input type="number" name="storage" value="<%= product.storage %>" placeholder="Storage.." required>
+        <input type="number" name="ram" value="<%= product.ram %>" placeholder="Ram.." required>
+        <input type="text" name="desc" value="<%= product.desc %>" placeholder="introduce the product.." required>
+        <input type="text" name="longdesc" value="<%= product.longdesc %>"
+            placeholder="describe the product in details.." required>
+        <input type="number" name="mrp" value="<%= product.mrp %>" placeholder="Actual price.." required>
+        <input type="number" name="price" value="<%= product.price %>" placeholder="Set its price.." required>
+        <input type="text" name="binkies" value="<%= product.binkies %>" placeholder="binkies...">
+        <input type="hidden" name="qty" value="<%= product.qty %>">
+        <input type="submit" value="Update Product">
+    </form>
+    <script>
+        const lastLine = document.querySelector('.bigone').value.split('\n').length - 1;
+        document.getElementById('last-line-button').addEventListener('click', () => {
+            event.preventDefault();
+            const textarea = document.querySelector('.bigone');
+            const selection = textarea.value.length;
+            textarea.setSelectionRange(selection, selection);
+        });
+    </script>
+</body>

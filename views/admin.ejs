@@ -1,0 +1,76 @@
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+
+<body>
+    <h1>See Orders Status</h1>
+    <form action="/cart/admin/orders" method="get">
+        <button>SEE ORDERS</button>
+    </form>
+    <h1>Add A Product-</h1>
+    <form action="/cart/create" method="post" class="addpro">
+        <input type="text" name="imagePath" placeholder="Input image Path.." required>
+        <input type="text" name="bigImg" placeholder="Bigger image Path.." required>
+        <input type="text" name="frontcam" placeholder="Frontcam.." required>
+        <input type="text" name="rearcam" placeholder="Rearcam.." required>
+        <input type="text" name="Android" placeholder="Android.." required>
+        <input type="text" name="seller" placeholder="Seller.." required>
+        <input type="number" name="battery" placeholder="Battery.." required>
+        <input type="text" name="processor" placeholder="Processor.." required>
+        <input type="text" name="brand" placeholder="Product company.." required>
+        <input type="text" name="color" placeholder="Product color.." required>
+        <input type="number" name="storage" placeholder="Storage.." required>
+        <input type="number" name="ram" placeholder="Ram.." required>
+        <input type="text" name="desc" placeholder="introduce the product.." required>
+        <input type="text" name="longdesc" placeholder="describe the product in details.." required>
+        <input type="number" name="mrp" placeholder="Actual price.." required>
+        <input type="number" name="price" placeholder="Set its price.." required>
+        <input type="hidden" name="qty">
+        <input type="submit" value="Add product">
+    </form>
+    <div class="container">
+        <% for(let i of products){ %>
+            <div class="details">
+                <div class="one"><img src="<%=i.imagePath%>" alt="" width="200" height="190"></div>
+                <div class="two">
+                    <p>
+                        <%=i.desc%>
+                    </p>
+                    <h2>
+                        <%=i.brand%>
+                    </h2>
+                    <h4><%=i.storage%>GB</h4>
+                    <h3><s>
+                            <%=i.mrp%>
+                        </s>&nbsp;&nbsp;&nbsp;<%=i.price%>
+                    </h3>
+                    <a href="/cart/edit/<%=i._id%>"><button>Edit</button></a><br>
+                    <form action="/cart/delete/<%=i._id%>" method="get">
+                        <button type="submit" class="delete-btn" data-product-id="<%= i._id %>">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+    </div>
+    <script>
+        const deleteBtns = document.querySelectorAll('.delete-btn');
+        deleteBtns.forEach((deleteBtn) => {
+            deleteBtn.addEventListener('click', (event) => {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+
+                // Get the product ID from the data attribute of the delete button
+                const productId = deleteBtn.dataset.productId;
+
+                // Show the confirmation prompt with the product ID in the message
+                const confirmDelete = confirm(`Are you sure you want to delete product ${productId}?`);
+
+                // If the user confirms the delete, submit the form
+                if (confirmDelete) {
+                    deleteBtn.parentNode.submit();
+                }
+            });
+        });
+    </script>
+</body>

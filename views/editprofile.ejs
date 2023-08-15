@@ -1,0 +1,27 @@
+<head>
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/editprofile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="navigate">
+        <%-include('_nav');%>
+    </div>
+    <div class="container">
+        <form action="/users/update/<%=user._id%>" id="fillform" enctype="multipart/form-data" method="post" id="">
+            <input type="file" name="avatar" placeholder="Profile Pic">
+            <input type="text" name="name" placeholder="Enter your user name">
+            <input type="date" name="dateOfBirth" value="<%= user.dateOfBirth.toISOString().substr(0, 10) %>" placeholder="Enter your date of birth">
+            <input type="tel" name="phoneNumber" value="<%= user.phoneNumber %>" placeholder="Enter your phone number">
+            <input type="text" name="fullName" value="<%= user.fullName %>" placeholder="Enter your full name">
+            <select name="gender">
+                <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+                <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+                <option value="other" <%= user.gender === 'other' ? 'selected' : '' %>>Other</option>
+            </select>
+            <textarea name="address" placeholder="Enter your address"><%= user.address %></textarea>
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</body>

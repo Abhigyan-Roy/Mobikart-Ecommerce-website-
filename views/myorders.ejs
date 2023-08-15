@@ -1,0 +1,88 @@
+<head>
+    <title>
+        <%=title%>
+    </title>
+    <link rel="stylesheet" href="/myorder.css">
+    <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="navigate">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Brands</a>
+                    <div class="sub-menu">
+                        <ul class="sub-menu">
+                            <li><a href="/cart/iphone">iphone</a></li>
+                            <li><a href="">samsung</a></li>
+                            <li><a href="">realme</a></li>
+                            <li><a href="/cart/oppo">oppo</a></li>
+                            <li><a href="/cart/vivo">vivo</a></li>
+                            <li><a href="">oneplus</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Stores</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
+            </ul>
+            <% if(locals.user){%>
+                <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+                        <%=user.name%>
+                    </button></a>
+                <%} else{%>
+                    <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
+                    <%}%>
+                        <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
+        </nav>
+    </div>
+    <div class="wrapper">
+        <h1>Your Orders :</h1>
+        <div class="project">
+            <div class="shop">
+                <% if (orders.length===0) { %>
+                    <h1>You have no orders yet!
+                        <%} else{%>
+                            <% orders.forEach(function(order) { %>
+                                <% order.items.forEach(function(item) { %>
+                                    <div class="box">
+                                        <img src="<%= item.productId.imagePath %>" alt="" width="150" height="200">
+                                        <div class="content">
+                                            <h3><%= order._id %>&nbsp;&nbsp;<a href="/order/details/<%= order._id %>">
+                                                <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+                                                </a>
+                                            </h3>
+                                            <h3>
+                                                <%= item.productId.desc %>
+                                            </h3>
+                                            <h3>Quantity:
+                                                <%= item.qty %>
+                                            </h3>
+                                            <h3>
+                                                Subtotal: ₹ <%= item.qty * item.productId.price %>
+                                            </h3>
+                                            <h4>
+                                                Purchased on: <%= order.createdAt.toLocaleString('en-US', {
+                                                    dateStyle: 'medium' , timeStyle: 'short' }) %>
+                                            </h4>
+                                            <h4>
+                                                Status:&nbsp;&nbsp;<span class="<%= order.status.replace(/\s/g,'') %>">
+                                                    <%= order.status%>
+                                                </span>
+                                            </h4>
+                                            <h5>
+                                                Contact Number: <%= order.phone %>
+                                            </h5>
+                                            <h5>
+                                                Address: <%= order.address %>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                                        <% }); %>
+                                            <% } %>
+            </div>
+        </div>
+</body>

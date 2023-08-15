@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    color: aliceblue;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    justify-content: center;
+}
+td>img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+th,td{
+    color: aliceblue;
+}

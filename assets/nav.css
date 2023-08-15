@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
+
+.navigate{
+    width: 100vw;
+    height: 20vh;
+}
+body{
+    font-family: 'Cairo', sans-serif;
+}
+nav {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 18px;
+}
+
+ul {
+    list-style: none;
+}
+.dropdown li{
+    display: block;
+ }
+ .dropdown{
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+ }
+ ul li:hover ul.dropdown{
+    display: block;
+ }
+.nav-links {                                              /*ul class for navigation bar*/
+    display: flex;
+    align-items: center;
+   
+}
+.nav-links li i{
+   color: white;
+   cursor: pointer;
+}
+.nav-links li {
+    margin: 0 40px;
+}
+
+li button {
+    background-color: rgb(52, 51, 51);
+    color: whitesmoke;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 15px;
+}
+.menu-btn {
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    cursor: pointer;
+    width: 40px;
+    height: 38px;
+    display: none;
+}
+
+
+.cart1 {
+    position: absolute;
+    top: 14px;
+    right: 75px;
+}
+
+.cart2 {
+    position: absolute;
+    top: 15px;
+    right: 140px;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    cursor: pointer;
+}
+.countitems {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    top: 44px;
+    right: 64px;
+    color: white;
+    border-radius: 50px;
+    background-color: rgb(189, 6, 6);
+    text-align: center;
+    z-index: 100;
+}
+
+@media screen and (max-width: 998px) {
+    html {
+        font-size: 55%;
+    }
+    nav {
+        padding: 0;
+    }
+    .menu-btn {
+        display: block;
+        z-index: 2;
+    }
+    .nav-links {
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        background-color: rgb(53, 7, 77);
+        margin-top: -2000px;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+    .nav-links li {
+        margin: 30px auto;
+    }
+    .mobile-menu {
+        margin-top: 0px;
+    }
+    .cart1 {
+        right: 90px;
+    }
+    .cart2 {
+        right: 170px;
+    }
+    .countitems {
+        top: 44px;
+        right: 82px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 45%;
+    }
+}

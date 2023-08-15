@@ -1,0 +1,643 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Black+Ops+One&family=Cairo:wght@600&family=Kelly+Slab&family=Macondo&family=Plus+Jakarta+Sans:wght@200&family=Smooch&display=swap');
+
+html {
+    font-size: 62.5%;
+    height: auto;
+    background-color: rgb(16, 10, 26);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Cairo', sans-serif;
+}
+
+header {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+/*navigation*/
+nav {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.6rem;
+    height: 10vh;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.8rem;
+}
+
+ul {
+    list-style: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 0rem 4rem;
+}
+
+.nav-links li i {
+    color: white;
+    cursor: pointer;
+}
+
+li button {
+    background-color: rgb(52, 51, 51);
+    color: whitesmoke;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+}
+
+.cart1 {
+    position: absolute;
+    top: 1.4rem;
+    right: 7.5rem;
+}
+
+.cart2 {
+    position: absolute;
+    top: 1.5rem;
+    right: 14rem;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    cursor: pointer;
+}
+
+.countitems {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    top: 4.4rem;
+    right: 6.4rem;
+    color: white;
+    border-radius: 50px;
+    background-color: rgb(189, 6, 6);
+    text-align: center;
+    z-index: 100;
+}
+
+.menu-btn {
+    position: absolute;
+    top: 2.2rem;
+    right: 2.8rem;
+    cursor: pointer;
+    width: 4rem;
+    height: 3.8rem;
+    display: none;
+}
+.dropdown li {
+    display: block;
+}
+
+.dropdown {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+ul li:hover ul.dropdown {
+    display: block;
+}
+
+/*end of navigation*/
+.heading {
+    margin-bottom: 15rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.head {
+    display: flex;
+}
+
+.head img {
+    margin-top: 2.2rem;
+    margin-left: -5.5rem;
+    width: 100%;
+}
+
+.heading h1 {
+    font-size: 5.6rem;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    margin-left: -4rem;
+}
+
+.line {
+    width: 9rem;
+    height: 0.15rem;
+    margin: -4.2rem 17rem 3.5rem auto;
+    background-color: aliceblue;
+}
+
+.heading h3 {
+    font-size: 1.6rem;
+    margin-top: -0.1rem;
+    color: white;
+
+}
+
+.search-container form {
+    width: 50rem;
+    height: 10vh;
+    display: grid;
+    grid-template-areas: 'areatwo areatwo areatwo areatwo areatwo areatwo areaone';
+    margin-top: 0.8rem;
+}
+
+.search-container form input[type=text] {
+    padding: 0.6rem;
+    font-size: 1.7rem;
+    border: none;
+    height: 5vh;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    grid-area: areatwo;
+}
+
+.search-container form button {
+    grid-area: areaone;
+    padding: 0.6rem;
+    background: rgb(129, 127, 127);
+    font-size: 1.7rem;
+    border: none;
+    cursor: pointer;
+    height: 5vh;
+}
+.logos{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 100vw;
+    height: 280vh;
+}
+
+.brands {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+}
+
+.brands h2 {
+    color: white;
+    font-size: 3rem;
+    font-family: 'Macondo', cursive;
+    margin-top: 5rem;
+}
+
+.brands-card {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.one {
+    width: 100%;
+    height: 60%;
+    text-align: center;
+}
+
+.two {
+    width: 100%;
+    height: 40%;
+    color: white;
+    text-align: center;
+}
+
+.two h2 {
+    font-size: 2.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 1rem;
+}
+
+.two h3 {
+    font-size: 1.8rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0.5rem;
+}
+
+.two h4 {
+    font-size: 1.4rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0.5rem;
+}
+
+.two button {
+    padding: 0.5rem;
+    background-color: black;
+    color: aliceblue;
+    border: 0.2rem solid white;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-family: 'Kelly Slab', cursive;
+    border-radius: 3rem;
+    transition: all 0.7s ease;
+}
+
+.two button:hover {
+    background-color: aliceblue;
+    color: black;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.check button {
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: rgb(6, 64, 45);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: 'Kelly Slab', cursive;
+    font-size: 1.6rem;
+}
+
+.shop {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.brandname {
+    margin: 6vh 0.8vw;
+    cursor: pointer;
+}
+
+.reasons {
+    width: 200px;
+    height: 200px;
+    margin: 6vh 6vw;
+    text-align: center;
+    cursor: pointer;
+}
+
+footer {
+    width: 100vw;
+    height: auto;
+    position: relative;
+    top: 135vh;
+}
+
+.foot1 {
+    background-color: rgb(78, 77, 76);
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    color: aliceblue;
+    font-family: 'Kelly Slab', cursive;
+    font-size: 15px;
+}
+
+.foot2 {
+    background-color: rgb(49, 49, 48);
+    height: 30vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#first {
+    width: 40vh;
+    color: aliceblue;
+    font-size: 18px;
+    padding: 10px;
+    font-family: 'Cairo', sans-serif;
+}
+
+#first p {
+    font-size: 15px;
+}
+
+.card-container {
+    min-height: 80vh;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper {
+    width: 80vw;
+    height: 50rem;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: rgb(16, 10, 26);
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+}
+
+.swiper-button-next {
+    color: aliceblue;
+}
+
+.swiper-button-prev {
+    color: aliceblue;
+}
+
+
+.app-show {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.app {
+    position: absolute;
+    top: 9vh;
+    left: 11vw;
+}
+
+.fontt {
+    position: absolute;
+    top: 15vh;
+    font-family: 'Akshar', sans-serif;
+    font-size: 6rem;
+    left: 36vw;
+    color: aliceblue;
+}
+
+.fontt2 {
+    position: absolute;
+    top: 30vh;
+    font-size: 1.8rem;
+    left: 36vw;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: aliceblue;
+}
+
+.check {
+    position: absolute;
+    top: 36vh;
+    font-size: 20px;
+    left: 36vw;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: aliceblue;
+}
+
+.checkout {
+    margin: 8px;
+}
+
+.text {
+    position: absolute;
+    top: 42vh;
+    font-size: 20px;
+    left: 36vw;
+}
+
+#texthold {
+    padding: 10px;
+    width: 25vw;
+    border-radius: 6px;
+    border: 0.3px solid gray;
+    font-size: 20px;
+}
+
+#buttonhold {
+    width: 10vw;
+    height: 6.2vh;
+    border-radius: 8px;
+    border: 0;
+    background-color: rgb(218, 94, 94);
+}
+
+#buttonhold a {
+    text-decoration: none;
+    color: azure;
+    font-size: 18px;
+}
+
+.down {
+    position: absolute;
+    top: 54vh;
+    font-size: 20px;
+    left: 36vw;
+}
+
+.down img {
+    margin-right: 30px;
+}
+
+.text-typing {
+    font-size: 1.6rem;
+    color: aliceblue;
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+    margin-top: -1.2rem;
+}
+
+.text-typing p {
+    margin: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 5s steps(22, end) infinite,
+        blink 1s infinite;
+}
+
+@keyframes typing {
+    0% {
+        width: 0%
+    }
+
+    100% {
+        width: 100%
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        border-right: 2px solid transparent;
+    }
+
+    50% {
+        border-right: 2px solid #ffffff;
+    }
+}
+
+@media screen and (max-width:998px) {
+    html {
+        font-size: 55%;
+    }
+
+    nav {
+        padding: 0;
+    }
+
+    .menu-btn {
+        display: block;
+        z-index: 102;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        background-color: rgb(53, 7, 77);
+        margin-top: -2000rem;
+        transition: all 0.5s ease;
+        z-index: 101;
+    }
+
+    .nav-links li {
+        margin: 3rem auto;
+    }
+
+    .mobile-menu {
+        margin-top: 0rem;
+    }
+
+    .line {
+        margin: -5.8rem 18rem 3.5rem auto;
+    }
+
+    .heading h1 {
+        margin-left: -4.5rem;
+    }
+
+    .head img {
+        margin-left: -6rem;
+        width: 100%;
+    }
+
+    .logos img {
+        margin-right: 0.2rem;
+    }
+
+    .cart1 {
+        right: 9rem;
+    }
+
+    .cart2 {
+        right: 17rem;
+    }
+
+    .countitems {
+        top: 4.4rem;
+        right: 8.2rem;
+    }
+
+    .brands-card {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 40%;
+        height: 80%;
+    }
+
+    .shop {
+        padding: 2rem;
+        width: 100%;
+        height: 40vh;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brandname {
+        width: 10rem;
+        height: 10rem;
+        margin-right: 5rem;
+    }
+
+    .brandname img {
+        width: 14rem;
+        height: 6rem;
+    }
+}
+
+@media screen and (max-width:864px) {
+    html {
+        font-size: 49%;
+    }
+}
+
+@media screen and (max-width:760px) {
+    html {
+        font-size: 44%;
+    }
+}
