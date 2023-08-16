@@ -1,82 +1,22 @@
 <title>
   <%=title%>
 </title>
+<link rel="stylesheet" href="/nav.css">
 <link rel="stylesheet" href="/details.css">
 <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src='https://embed.binkies3d.com/integrations/MNwaX7Qx/yiy0yc1z/script.js'></script>
 <link rel="stylesheet" href="https://fdn.gsmarena.com/vv/assets12/css/binkies-3d.css?v=11" />
 
-<script>
-  function swatchClicked(target) {
-    var selected = document.querySelector(".binkies-color-swatch.selected");
-    if (selected !== null) selected.classList.remove("selected");
-    target.classList.add("selected");
-  }
-  function load3D() {
-    var selected = document.querySelector("#binkies-container-waiting-on-click");
-    if (selected !== null) selected.id = "binkies-container";
-  }
-</script>
-
 <body>
   <div class="navigate">
-    <nav>
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="#">Brands</a>
-          <div class="sub-menu">
-            <ul class="sub-menu">
-              <li><a href="/cart/iphone">iphone</a></li>
-              <li><a href="">samsung</a></li>
-              <li><a href="">realme</a></li>
-              <li><a href="/cart/oppo">oppo</a></li>
-              <li><a href="/cart/vivo">vivo</a></li>
-              <li><a href="">oneplus</a></li>
-            </ul>
-          </div>
-        </li>
-        <li><a href="/cart/compare">Compare</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
-      </ul>
-      <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
-      <%if(locals.user){%>
-        <% if(cart==null || cart.items.length==0){%>
-          <div class="countitems">0</div>
-          <%} else{%>
-            <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i];
-              totalQty+=product.qty; %>
-              <%}%>
-                <div class="countitems">
-                  <%=totalQty%>
-                </div>
-                <%}%>
-                  <%}%>
-                    <% if(locals.user){%>
-                      <a href="/users/profile"><button class="cart2"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;
-                          <%=user.name%>
-                        </button></a>
-                      <%} else{%>
-                        <a href="/users/sign-in"><button class="cart2"><i class="fa-solid fa-user"></i></button></a>
-                        <%}%>
-                          <img src="/pic/menu.png" alt="" class="menu-btn" width="40" height="50">
-    </nav>
+    <%-include('_nav');%>
   </div>
-
   <div class="card-wrapper">
     <div class="card">
       <!-- card left -->
       <div class="product-imgs">
-        <div class="threesixty">
-          <div id="binkies-container">
-            <div id="binkies-content"></div>
-            <div id="binkies-color-switcher">
-              <div class="binkies-color-swatch selected" data-binkies-content-id="<%=product.binkies%>"
-                onclick="swatchClicked(this)"><%=product.color%></div>
-            </div>
-          </div>
-        </div>
+        <img src="<%=product.imagePath%>" alt="">
         <div class="button-container">
           <div class="purchase-info">
             <form action="/cart/add-to-cart/<%=product._id%>" method="post">
