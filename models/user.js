@@ -40,7 +40,8 @@ const userSchema = new mongoose.Schema({
         default: "N/A"
     },
     avatar: {
-        type: String
+        type: String,
+        default:"https://imgs.search.brave.com/FrjknLEFfRY9CepUgm1ImDKqj8lF3wVf5egvCuiYEzs/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAxLzE4LzAxLzk4/LzM2MF9GXzExODAx/OTgyMl82Q0tYUDZy/WG1WaERPemJYWmxM/cUVNMnlhNEhoWXpT/Vi5qcGc"
     },
     cart: {
         items: [{

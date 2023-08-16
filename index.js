@@ -76,7 +76,7 @@ const { Server } = require('socket.io');
 const serverSide = require('./config/chat_sockets');
 const io = new Server(httpServer, {
     cors: {
-        origin: "https://mobicart-fvd2.onrender.com"
+        origin: "https://mobicart-b79g.onrender.com"
     }
 })
 serverSide(io);
