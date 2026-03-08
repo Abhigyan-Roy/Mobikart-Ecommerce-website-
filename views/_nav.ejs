@@ -1,7 +1,9 @@
-<script src="/first.js"></script>
-<script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
-<nav>
-    <ul class="nav-links">
+<nav class="mc-nav">
+    <a class="mc-nav__brand" href="/">
+        <span class="mc-nav__brandMark">M</span>
+        <span class="mc-nav__brandText">MobiCart</span>
+    </a>
+    <ul class="mc-nav__links">
         <li><a href="/">Home</a></li>
         <li>
             <a href="#">Brands <i class="fas fa-caret-down"></i></a>
@@ -16,29 +18,34 @@
         </li>
         <li><a href="/cart/compare">Compare</a></li>
         <li><a href="/cart/aboutus">Contact Us</a></li>
-        <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
     </ul>
-    <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
-    <%if(locals.user){%>
-        <% if(cart==null || cart.items.length==0){%>
-            <div class="countitems">0</div>
-            <%} else{%>
-                <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i];
-                    totalQty+=product.qty; %>
-                    <%}%>
+    <div class="mc-nav__actions">
+        <a class="mc-nav__cart" href="/cart/show" aria-label="Cart">
+            <i class="fa-solid fa-cart-shopping fa fa-shopping-cart"></i>
+            <% if (locals.user) { %>
+                <% if (cart==null || cart.items.length==0) { %>
+                    <span class="mc-badge">0</span>
+                <% } else { %>
+                    <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i]; totalQty+=product.qty; } %>
+                    <span class="mc-badge"><%= totalQty %></span>
+                <% } %>
+            <% } %>
+        </a>
 
-                        <div class="countitems">
-                            <%=totalQty%>
-                        </div>
-                        <%}%>
-                            <%}%>
-                                <% if(locals.user){%>
-                                    <a href="/users/profile"><button class="cart2"><i
-                                                class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></button></a>
-                                    <%} else{%>
-                                        <a href="/users/sign-in"><button class="cart2"><i
-                                                    class="fa-solid fa-user"></i></button></a>
-                                        <%}%>
-                                            <img src="/pic/menu2.png" alt="" class="menu-btn" width="40"
-                                                height="50">
+        <% if (locals.user) { %>
+            <a class="mc-nav__user" href="/users/profile">
+                <i class="fa-solid fa-user fa fa-user"></i>
+                <span class="mc-nav__userName"><%= user.name %></span>
+            </a>
+            <a class="mc-btn mc-nav__auth" href="/users/wishlist">
+                <i class="fa-regular fa-heart fa fa-heart"></i>&nbsp;Wishlist
+            </a>
+        <% } else { %>
+            <a class="mc-btn mc-btn--primary mc-nav__auth" href="/users/sign-in">Sign in</a>
+            <a class="mc-btn mc-nav__auth" href="/users/sign-up" target="_blank">Create account</a>
+        <% } %>
+        <button class="mc-nav__toggle menu-btn" type="button" aria-label="Menu">
+            <i class="fa-solid fa-bars fa fa-bars"></i>
+        </button>
+    </div>
 </nav>

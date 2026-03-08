@@ -2,11 +2,27 @@ const User = require('../models/user');
 const userMailer=require('../mailers/signup_mailer');
 
 module.exports.profile = function(req, res){
-        return res.render('profile', {
-            title: 'User Profile',
-            cart: req.user.cart
+    return res.render('profile', {
+        title: 'User Profile',
+        cart: req.user.cart,
+        wishlist: req.user.wishlist
+    });
+};
+
+module.exports.wishlist = async function(req, res) {
+    try {
+        await req.user.populate('wishlist.productId');
+        return res.render('wishlist', {
+            title: 'My Wishlist',
+            cart: req.user.cart,
+            wishlist: req.user.wishlist
         });
-    };
+    } catch (err) {
+        console.log(err);
+        req.flash('error', 'Unable to load wishlist');
+        return res.redirect('back');
+    }
+};
 
 module.exports.editProfile = function(req, res){
     User.findById(req.params.id, function(err, user){

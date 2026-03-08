@@ -56,7 +56,18 @@ const userSchema = new mongoose.Schema({
             }
         }],
         totalPrice: Number
-    }
+    },
+    wishlist: [{
+        productId: {
+            type: mongoose.Types.ObjectId,
+            ref: 'Product',
+            required: true
+        },
+        addedAt: {
+            type: Date,
+            default: Date.now
+        }
+    }]
 }, {
     timestamps: true
 });
@@ -115,6 +126,29 @@ userSchema.methods.removeFromCart = async function(productId) {
         return this.save();
     }
 }
+
+userSchema.methods.addToWishlist = async function(productId) {
+    const product = await Product.findById(productId);
+    if (!product) return;
+
+    const exists = this.wishlist.find(
+        (item) => new String(item.productId).trim() === new String(product._id).trim()
+    );
+    if (!exists) {
+        this.wishlist.push({ productId: product._id });
+        return this.save();
+    }
+};
+
+userSchema.methods.removeFromWishlist = async function(productId) {
+    const index = this.wishlist.findIndex(
+        (item) => new String(item.productId).trim() === new String(productId).trim()
+    );
+    if (index >= 0) {
+        this.wishlist.splice(index, 1);
+        return this.save();
+    }
+};
 
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {

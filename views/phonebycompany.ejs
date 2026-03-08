@@ -8,53 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/productpage.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/theme.css">
     <link rel="stylesheet" href="slidein.css">
 </head>
 
 <body>
     <div class="navigate">
-        <nav>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li>
-                    <a href="#">Brands <i class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown">
-                        <li><a href="/cart/samsung">samsung</a></li>
-                        <li><a href="/cart/oppo">oppo</a></li>
-                        <li><a href="/cart/realme">realme</a></li>
-                        <li><a href="/cart/vivo">vivo</a></li>
-                        <li><a href="/cart/iphone">iphone</a></li>
-                        <li><a href="/cart/oneplus">oneplus</a></li>
-                    </ul>
-                </li>
-                <li><a href="/cart/compare">Compare</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
-            </ul>
-            <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
-            <%if(locals.user){%>
-                <% if(cart==null || cart.items.length==0){%>
-                    <div class="countitems">0</div>
-                    <%} else{%>
-                        <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i];
-                            totalQty+=product.qty; %>
-                            <%}%>
-                                <div class="countitems">
-                                    <%=totalQty%>
-                                </div>
-                                <%}%>
-                                    <%}%>
-                                        <% if(locals.user){%>
-                                            <a href="/users/profile"><button class="cart2"><i
-                                                        class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%>
-                                                        </button></a>
-                                            <%} else{%>
-                                                <a href="/users/sign-in"><button class="cart2"><i
-                                                            class="fa-solid fa-user"></i></button></a>
-                                                <%}%>
-                                                    <img src="/pic/menu.png" alt="" class="menu-btn" width="40"
-                                                        height="50">
-        </nav>
+        <%- include('_nav'); %>
     </div>
     <div class="container mt-5 mb-5">
         <div class="d-flex justify-content-center row">
@@ -95,6 +56,30 @@
                         </div>
                     </div>
                     <% } %>
+
+                    <% if (typeof totalPages !== 'undefined' && totalPages > 1) { %>
+                        <nav aria-label="Product pagination" class="mt-4 d-flex justify-content-center">
+                            <ul class="pagination">
+                                <li class="page-item <%= hasPrevPage ? '' : 'disabled' %>">
+                                    <% if (hasPrevPage) { %>
+                                        <a class="page-link" href="/cart/<%= company %>?page=<%= prevPage %>">Previous</a>
+                                    <% } else { %>
+                                        <span class="page-link">Previous</span>
+                                    <% } %>
+                                </li>
+                                <li class="page-item disabled">
+                                    <span class="page-link">Page <%= currentPage %> of <%= totalPages %></span>
+                                </li>
+                                <li class="page-item <%= hasNextPage ? '' : 'disabled' %>">
+                                    <% if (hasNextPage) { %>
+                                        <a class="page-link" href="/cart/<%= company %>?page=<%= nextPage %>">Next</a>
+                                    <% } else { %>
+                                        <span class="page-link">Next</span>
+                                    <% } %>
+                                </li>
+                            </ul>
+                        </nav>
+                    <% } %>
             </div>
         </div>
     </div>
@@ -113,5 +98,5 @@
                     duration: 1000
                 });
             </script>
-            <script src="first.js"></script>
+            <script src="/first.js"></script>
 </body>

@@ -1,0 +1,89 @@
+<head>
+  <title>My Wishlist</title>
+  <link rel="stylesheet" href="/nav.css">
+  <link rel="stylesheet" href="/productpage.css">
+  <link rel="stylesheet" href="/theme.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="wishlist-page">
+  <div class="navigate">
+    <%- include('_nav'); %>
+  </div>
+
+  <div class="mc-container" style="padding: 32px 0 40px;">
+    <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div>
+        <h1 style="font-size:24px;margin:0 0 4px;">My wishlist</h1>
+        <p style="margin:0;font-size:14px;color:rgba(255,255,255,.7);">
+          Save products you love and move them to cart when you’re ready.
+        </p>
+      </div>
+      <% if (wishlist && wishlist.length) { %>
+      <span class="mc-pill">
+        <i class="fa-regular fa-heart"></i>
+        <%= wishlist.length %> saved
+      </span>
+      <% } %>
+    </header>
+
+    <% if (!wishlist || !wishlist.length) { %>
+      <div class="mc-card" style="padding:24px;text-align:center;">
+        <p style="margin-bottom:8px;">Your wishlist is empty.</p>
+        <p style="margin-bottom:18px;font-size:14px;color:rgba(255,255,255,.7);">
+          Browse products and tap “Move to Wishlist” to save them here.
+        </p>
+        <a href="/cart" class="mc-btn mc-btn--primary">Browse phones</a>
+      </div>
+    <% } else { %>
+      <div class="container mt-3 mb-4">
+        <div class="d-flex justify-content-center row">
+          <div class="col-md-10">
+            <% wishlist.forEach(function(item){ const p = item.productId; if (!p) { return; } %>
+              <div class="row p-2 bg-white border rounded m-3">
+                <div class="col-md-3 mt-1">
+                  <img class="img-fluid img-responsive rounded product-image wishlist-product-image" src="<%=p.imagePath%>">
+                </div>
+                <div class="col-md-6 mt-1">
+                  <h5><%=p.desc%></h5>
+                  <div class="mt-1 mb-1 spec-1">
+                    <span><%=p.ram%> GB</span>
+                    <span class="dot"></span>
+                    <span><%=p.storage%> GB</span>
+                  </div>
+                  <p class="text-justify text-truncate para mb-0"><%=p.longdesc%>...</p>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                  <div class="d-flex flex-row align-items-center">
+                    <h4 class="mr-1">₹<%=p.price%></h4>
+                    <span class="strike-text">₹<%=p.mrp%></span>
+                  </div>
+                  <div class="d-flex flex-column mt-4">
+                    <a href="/cart/showdetails/<%=p._id%>">
+                      <button class="btn btn-primary btn-sm mt-2" type="button">
+                        View details
+                      </button>
+                    </a>
+                    <form action="/cart/add-to-cart/<%=p._id%>" method="post">
+                      <button type="submit" class="btn btn-outline-primary btn-sm mt-2 w-8">
+                        Move to cart
+                      </button>
+                    </form>
+                    <form action="/users/wishlist/remove/<%=p._id%>" method="post">
+                      <button type="submit" class="btn btn-outline-danger btn-sm mt-2 w-8">
+                        Remove
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+
+  <script src="/first.js"></script>
+</body>
+</html>
+

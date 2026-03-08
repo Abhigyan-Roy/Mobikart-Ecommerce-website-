@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/nav.css">
     <link rel="stylesheet" href="/background.css">
     <link rel="stylesheet" href="/slidein.css">
     <link rel="stylesheet" href="/chatbox.css">
+    <link rel="stylesheet" href="/theme.css">
     <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
@@ -22,54 +24,16 @@
         <div id="stars2"></div>
         <div id="stars3"></div>
     </section>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li>
-                <a href="#">Brands <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown">
-                    <li><a href="/cart/samsung">samsung</a></li>
-                    <li><a href="/cart/oppo">oppo</a></li>
-                    <li><a href="/cart/realme">realme</a></li>
-                    <li><a href="/cart/vivo">vivo</a></li>
-                    <li><a href="/cart/iphone">iphone</a></li>
-                    <li><a href="/cart/oneplus">oneplus</a></li>
-                </ul>
-            </li>
-            <li><a href="/cart/compare">Compare</a></li>
-            <li><a href="/cart/aboutus">Contact Us</a></li>
-            <li><a href="/users/sign-up" target="_blank"><button type="submit">Sign-Up / Sign-In</button></a></li>
-        </ul>
-        <a href="/cart/show"><img src="/pic/sc1.png" alt="" class="cart1" width="38" height="40"> </a>
-        <%if(locals.user){%>
-            <% if(cart==null || cart.items.length==0){%>
-                <div class="countitems">0</div>
-                <%} else{%>
-                    <% let totalQty=0; for(let i=0; i < cart.items.length; i++){ let product=cart.items[i];
-                        totalQty+=product.qty; %>
-                        <%}%>
-                            <div class="countitems">
-                                <%=totalQty%>
-                            </div>
-                            <%}%>
-                                <%}%>
-                                    <% if(locals.user){%>
-                                        <a href="/users/profile"><button class="cart2"><i
-                                                    class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></button></a>
-                                        <%} else{%>
-                                            <a href="/users/sign-in"><button class="cart2"><i
-                                                        class="fa-solid fa-user"></i></button></a>
-                                            <%}%>
-                                                <img src="/pic/menu2.png" alt="" class="menu-btn" width="40"
-                                                    height="50">
-    </nav>
+    <div class="navigate">
+        <%- include('_nav'); %>
+    </div>
     <header>
         <div class="heading">
             <div class="head">
-                <img src="pic/sc3.png" alt="" class="logo" width="220" height="110">
+                <img src="pic/sc3.png" alt="MobiCart logo" class="logo">
                 <h1>MobiCart</h1>
             </div>
-            <div class="line"></div>
+
             <div class="text-typing">
                 <p>search, compare and buy.....</p>
             </div>
@@ -347,7 +311,7 @@
                     duration: 1000
                 });
             </script>
-            <script src="first.js"></script>
+            <script src="/first.js"></script>
             <script src="https://cdn.socket.io/4.5.3/socket.io.min.js"
                 integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi"
                 crossorigin="anonymous"></script>

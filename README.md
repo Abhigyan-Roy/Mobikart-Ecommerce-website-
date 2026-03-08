@@ -3,5 +3,7 @@ MobiKart is a mobile shopping application that specializes in selling a wide ran
 This site is live at https://mobicart-b79g.onrender.com/
 # Installation
 To install and run this project - install dependencies using npm and then start your server: <br />
+$ copy .env.example .env <br />
+$ update values in .env (DB, OAuth, email, Stripe) <br />
 $ npm install <br />
 $ npm start

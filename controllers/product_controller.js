@@ -1,7 +1,10 @@
 const Product = require('../models/product');
 const User = require('../models/user');
-const Publishable_Key = 'pk_test_51LWOEuSGMtzrB9e9nndOhmStMAuLvn5yRN2gzd02QDkkXWPi2T38t7mDTb9Y5ggw4DchTjGeorTzKqiPKV3OkNAL00lQgSQrba';
 const Order = require('../models/order');
+const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY || '';
+const secretKey = process.env.STRIPE_SECRET_KEY || '';
+const stripe = secretKey ? require('stripe')(secretKey) : null;
+
 exports.aboutUs = (req, res) => {
     res.render('about',{cart: req.user.cart});
 }
@@ -22,16 +25,25 @@ exports.addToCart = (req, res, next) => {
 
 //to connect the payment gateway of stripe
 module.exports.paymentgate = function (req, res) {
+    if (!publishableKey) {
+        req.flash('error', 'Stripe is not configured. Please set STRIPE_PUBLISHABLE_KEY.');
+        return res.redirect('back');
+    }
+
     req.user
         .populate('cart.items.productId')
         .then(user => {
-            res.render('payment', { cart: user.cart, key: Publishable_Key });
+            res.render('payment', { cart: user.cart, key: publishableKey });
         })
         .catch(err => console.log(err));
 }
 
 //to provide extra details about the payment session 
 module.exports.paymoney = function (req, res) {
+    if (!stripe) {
+        return res.status(503).send('Payment service is not configured.');
+    }
+
     // Moreover you can take more details from user
     // like Address, Name, etc from form
     stripe.customers.create({

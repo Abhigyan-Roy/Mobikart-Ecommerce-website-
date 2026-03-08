@@ -139,12 +139,15 @@ ul li:hover ul.dropdown {
 
 .head {
     display: flex;
+    align-items: center;
 }
 
 .head img {
-    margin-top: 2.2rem;
-    margin-left: -5.5rem;
-    width: 100%;
+    margin-top: 1rem;
+    margin-left: -2rem;
+    width: clamp(7rem, 10vw, 11rem);
+    height: auto;
+    object-fit: contain;
 }
 
 .heading h1 {
@@ -573,8 +576,8 @@ footer {
     }
 
     .head img {
-        margin-left: -6rem;
-        width: 100%;
+        margin-left: -1.5rem;
+        width: clamp(6rem, 14vw, 9rem);
     }
 
     .logos img {

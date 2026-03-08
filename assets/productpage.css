@@ -8,13 +8,20 @@ html{
     height: auto;
 }
 body{
-    background-color: black;
+    background-color: transparent;
     overflow-x: hidden;
 }
 .navigate{
     width: 100vw;
-    height: 20vh;
+    height: auto;
 }
+
+/* Make product list cards dark so white text is always visible (especially on mobile). */
+.bg-white{
+    background: rgba(15,23,42,.96) !important;
+    color: #e5e7eb !important;
+}
+
 .countitems{
     position: absolute;
     display: flex;
@@ -31,122 +38,12 @@ body{
     z-index: 100;
 }
 
-nav {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 16px;
-    justify-content: center;
-}
-
-a {
-    text-decoration: none;
-    color: aliceblue;
-    font-size: 18px;
-}
-
-ul {
-    list-style: none;
-}
-.dropdown li{
-    display: block;
- }
- .dropdown{
-    width: 100%;
-    position: absolute;
-    z-index: 999;
-    display: none;
- }
- ul li:hover ul.dropdown{
-    display: block;
- }
-.nav-links {                                              /*ul class for navigation bar*/
-    display: flex;
-    align-items: center;
-   
-}
-.nav-links li i{
-   color: white;
-   cursor: pointer;
-}
-.nav-links li {
-    margin: 0 40px;
-}
-
-li button {
-    background-color: rgb(52, 51, 51);
-    color: whitesmoke;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 15px;
-}
-.menu-btn {
-    position: absolute;
-    top: 22px;
-    right: 28px;
-    cursor: pointer;
-    width: 40px;
-    height: 38px;
-    display: none;
-}
-
-
-.cart1 {
-    position: absolute;
-    top: 14px;
-    right: 75px;
-}
-
-.cart2 {
-    position: absolute;
-    top: 15px;
-    right: 140px;
-    border-radius: 20px;
-    padding: 10px;
-    font-size: 15px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    cursor: pointer;
-}
+/* Navbar styles moved to `nav.css` */
 @media screen and (max-width: 998px) {
     html {
         font-size: 55%;
     }
-    nav {
-        padding: 0;
-    }
-    .menu-btn {
-        display: block;
-        z-index: 2;
-    }
-    .nav-links {
-        flex-direction: column;
-        width: 100vw;
-        height: 100vh;
-        justify-content: center;
-        background-color: rgb(53, 7, 77);
-        margin-top: -2000px;
-        transition: all 0.5s ease;
-        z-index: 1;
-    }
-    .nav-links li {
-        margin: 30px auto;
-    }
-    .mobile-menu {
-        margin-top: 0px;
-    }
-    .cart1 {
-        right: 90px;
-    }
-    .cart2 {
-        right: 170px;
-    }
-    .countitems {
-        top: 44px;
-        right: 82px;
-    }
+    /* navbar handled by `nav.css` */
 }
 
 @media screen and (max-width: 768px) {
@@ -155,3 +52,19 @@ li button {
     }
 }
 .ratings i{font-size: 16px;color: red}.strike-text{color: red;text-decoration: line-through}.product-image{width: 100%}.dot{height: 7px;width: 7px;margin-left: 6px;margin-right: 6px;margin-top: 3px;background-color: blue;border-radius: 50%;display: inline-block}.spec-1{color: #938787;font-size: 15px}h5{font-weight: 400}.para{font-size: 16px}
+
+/* Wishlist card image scale (kept separate from brand listing cards). */
+.wishlist-page .wishlist-product-image{
+    width: 100%;
+    max-width: 140px;
+    height: 140px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.wishlist-page .row.p-2.bg-white.border.rounded.m-3 .col-md-3.mt-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

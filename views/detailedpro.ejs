@@ -3,6 +3,7 @@
 </title>
 <link rel="stylesheet" href="/nav.css">
 <link rel="stylesheet" href="/details.css">
+<link rel="stylesheet" href="/theme.css">
 <script src="https://kit.fontawesome.com/878d22e054.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src='https://embed.binkies3d.com/integrations/MNwaX7Qx/yiy0yc1z/script.js'></script>
@@ -26,9 +27,17 @@
             </form>
           </div>
           <div class="purchase-info">
-            <button type="button" class="btn2 btn">
-              Move to Wishlist <i class="fa-solid fa-list-check"></i></i>
-            </button>
+            <% if (locals.user) { %>
+              <form action="/users/wishlist/add/<%=product._id%>" method="post">
+                <button type="submit" class="btn2 btn">
+                  Move to Wishlist <i class="fa-solid fa-list-check"></i>
+                </button>
+              </form>
+            <% } else { %>
+              <a href="/users/sign-in" class="btn2 btn">
+                Sign in to wishlist <i class="fa-solid fa-list-check"></i>
+              </a>
+            <% } %>
           </div>
         </div>
       </div>
@@ -160,3 +169,4 @@
     </div>
 </body>
 <script src="/show_star.js"></script>
+<script src="/first.js"></script>
