@@ -19,6 +19,8 @@ if (typeof config.db === 'string' && config.db.startsWith('mongodb+srv://')) {
 }
 
 mongoose.set('strictQuery', false);
+mongoose.set('bufferCommands', false);
+mongoose.set('bufferTimeoutMS', 0);
 
 // connect to the database (catch to avoid crashing on DNS/network failures)
 mongoose
@@ -41,3 +43,5 @@ db.once('open', function() {
     console.log("Successfully connected to the database");
 
 });
+
+module.exports = db;

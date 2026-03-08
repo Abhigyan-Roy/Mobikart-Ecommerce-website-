@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const userMailer=require('../mailers/signup_mailer');
+const mongoose = require('mongoose');
 
 module.exports.profile = function(req, res){
     return res.render('profile', {
@@ -74,6 +75,11 @@ module.exports.signin = function(req, res){
 }
 
 module.exports.create = function(req, res){
+    if (mongoose.connection.readyState !== 1) {
+        req.flash('error', 'Database is unavailable. Please try again later.');
+        return res.redirect('back');
+    }
+
     if (req.body.password != req.body.confirm_password){
         req.flash('error','Passwords do not match!');
         return res.redirect('back');

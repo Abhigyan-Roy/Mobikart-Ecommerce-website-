@@ -3,6 +3,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../models/user');
+const mongoose = require('mongoose');
 
 function escapeRegex(value) {
     return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -15,6 +16,11 @@ passport.use(new LocalStrategy({
         passReqToCallback: true
     },
     function(req, email, password, done){
+        if (mongoose.connection.readyState !== 1) {
+            req.flash('error', 'Database is unavailable. Please try again in a moment.');
+            return done(null, false);
+        }
+
         // find a user and establish the identity
         const normalizedEmail = (email || '').trim();
         User.findOne({email: new RegExp(`^${escapeRegex(normalizedEmail)}$`, 'i')}, function(err, user)  {
