@@ -4,6 +4,10 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../models/user');
 
+function escapeRegex(value) {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 
 // authentication using passport
 passport.use(new LocalStrategy({
@@ -12,7 +16,8 @@ passport.use(new LocalStrategy({
     },
     function(req, email, password, done){
         // find a user and establish the identity
-        User.findOne({email: email}, function(err, user)  {
+        const normalizedEmail = (email || '').trim();
+        User.findOne({email: new RegExp(`^${escapeRegex(normalizedEmail)}$`, 'i')}, function(err, user)  {
             if (err){
                 console.log('Error in finding user --> Passport');
                 return done(err);
