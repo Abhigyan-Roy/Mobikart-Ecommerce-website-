@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "a full stack ecommerce website",
   "main": "index.js",
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
     "start": "nodemon index.js",
     "prod_start": "NODE_ENV=production nodemon index.js",
